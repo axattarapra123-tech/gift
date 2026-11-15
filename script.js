@@ -425,7 +425,7 @@ const nicknameData = {
   janmo_sathi: {
     emoji: "♾️",
     title: "Mere Janmo Janmo Kie Sathi",
-    text: "Kal 3 saal pure ho rahe hain humare sath hone ko... par ye toh sirf ek shuruat hai! Maine rab se aane wale 7 janmo ke liye sirf aur sirf aapko maang liya hai. Har janam me Axat sirf aapka hi rahega!",
+    text: "Aaj 16 Nov ko 3 saal pure ho gaye humare sath hone ko... par ye toh sirf ek shuruat hai! Maine rab se aane wale 7 janmo ke liye sirf aur sirf aapko maang liya hai. Har janam me Axat sirf aapka hi rahega!",
     extra: "7 Janam & Infinity To Go! 💍❤️"
   },
   my_everything: {
