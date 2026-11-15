@@ -10,7 +10,2118 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
+  <style>
+/* ==========================================================================
+   ANNIVERSARY SURPRISE WEBSITE STYLESHEET (V3 - REAL MEMORIES & SHAYARI)
+   Dedicated to Axat's Cutest Wifiji & their 3rd Anniversary
+   ========================================================================== */
+
+:root {
+  --primary-pink: #ff4b72;
+  --primary-hover: #e11d48;
+  --primary-gradient: linear-gradient(135deg, #ff4b72 0%, #ff758c 50%, #ff7eb3 100%);
+  --secondary-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
+  --special-gradient: linear-gradient(135deg, #ff4b72 0%, #be123c 50%, #831843 100%);
+  --whatsapp-green: #25D366;
+  --whatsapp-dark: #128C7E;
+  --whatsapp-gradient: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  
+  --romantic-dark: #4a0e2e;
+  --romantic-deep: #2e081c;
+  --soft-blush: #fff1f4;
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(255, 255, 255, 0.95);
+  --glass-shadow: 0 15px 35px rgba(230, 57, 100, 0.12);
+  --glass-glow: 0 0 25px rgba(255, 75, 114, 0.25);
+  
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-script: 'Dancing Script', cursive;
+  --font-hand: 'Caveat', cursive;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  touch-action: manipulation;
+}
+
+body {
+  font-family: var(--font-main);
+  background: linear-gradient(135deg, #fff5f7 0%, #ffe8ed 30%, #ffd6e0 70%, #ffc0cb 100%);
+  background-attachment: fixed;
+  color: var(--romantic-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  padding-bottom: 75px;
+}
+
+/* Background Animated Canvas */
+#heartCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top Floating Navigation & Brand Bar */
+.top-nav-bar {
+  position: fixed;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.brand-badge {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 8px 18px;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(255, 75, 114, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  color: #be123c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart-pulse {
+  display: inline-block;
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Music Pill Controller */
+.music-pill {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 8px 18px;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(255, 75, 114, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.music-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 75, 114, 0.35);
+}
+
+.music-btn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-pink);
+}
+
+.music-icon {
+  font-size: 1.3rem;
+  animation: floatBounce 2s infinite ease-in-out;
+}
+
+.music-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.music-eq span {
+  width: 3px;
+  height: 4px;
+  background: var(--primary-pink);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.music-eq.playing span:nth-child(1) { animation: soundBar 0.8s infinite ease alternate; }
+.music-eq.playing span:nth-child(2) { animation: soundBar 1.2s infinite ease 0.2s alternate; }
+.music-eq.playing span:nth-child(3) { animation: soundBar 0.6s infinite ease 0.4s alternate; }
+.music-eq.playing span:nth-child(4) { animation: soundBar 1s infinite ease 0.1s alternate; }
+
+@keyframes soundBar {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+/* Mobile Bottom App Navigation */
+.bottom-app-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid #ffd0dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 6px 10px;
+  z-index: 100;
+  box-shadow: 0 -5px 25px rgba(255, 75, 114, 0.15);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #7c2d4d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  gap: 3px;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+.nav-item.active, .nav-item:hover {
+  color: var(--primary-pink);
+  transform: translateY(-2px);
+}
+
+.nav-item.highlight-nav {
+  background: #ffe3ea;
+  color: #be123c;
+  animation: pulseGlow 2s infinite;
+}
+
+/* Main Content Wrapper */
+.main-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px 20px 80px;
+}
+
+/* Glass Card Utility */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Typography Helpers */
+.script-font {
+  font-family: var(--font-script);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #e11d48, #ff4b72, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  text-align: center;
+  padding: 40px 10px 30px;
+  position: relative;
+}
+
+.page-sub-header {
+  padding-top: 10px;
+}
+
+.floating-stickers .sticker {
+  position: absolute;
+  font-size: 2.2rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 5px 10px rgba(255, 75, 114, 0.3));
+  pointer-events: none;
+  animation: floatBounce 4s infinite ease-in-out;
+}
+
+.sticker.s1 { top: 2%; left: 3%; animation-delay: 0s; font-size: 2.6rem; }
+.sticker.s2 { top: 6%; right: 4%; animation-delay: 1.2s; font-size: 2.5rem; }
+.sticker.s3 { top: 40%; left: -2%; animation-delay: 2.5s; }
+.sticker.s4 { top: 45%; right: -2%; animation-delay: 0.8s; font-size: 2.8rem; }
+.sticker.s5 { bottom: 10%; left: 4%; animation-delay: 1.8s; }
+.sticker.s6 { bottom: 8%; right: 5%; animation-delay: 3s; }
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ffd0dc;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary-pink);
+  margin-bottom: 24px;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.15);
+}
+
+.pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 75, 114, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(255, 75, 114, 0.45); }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 18px;
+  color: var(--romantic-deep);
+}
+
+.hero-title .script-font {
+  font-size: clamp(2.5rem, 6.5vw, 3.8rem);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #6d2842;
+  max-width: 720px;
+  margin: 0 auto 35px;
+  font-weight: 400;
+}
+
+/* Counter Card */
+.counter-card {
+  padding: 30px 25px;
+  margin: 0 auto 35px;
+  max-width: 820px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.counter-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.counter-header h3 {
+  font-size: 1.35rem;
+  color: var(--romantic-deep);
+  font-weight: 700;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.counter-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 16px 10px;
+  border-radius: 18px;
+  border: 1px solid #ffe2e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.counter-item:hover {
+  transform: translateY(-4px);
+  background: #ffffff;
+  border-color: var(--primary-pink);
+}
+
+.counter-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--primary-pink);
+  line-height: 1.2;
+}
+
+.counter-unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7c2d4d;
+  margin-top: 4px;
+}
+
+.counter-footer {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary-pink);
+  font-style: italic;
+}
+
+/* Action Buttons */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: 50px;
+  font-family: var(--font-main);
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(255, 75, 114, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(255, 75, 114, 0.5);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--primary-pink);
+  border: 2px solid #ffd0dc;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: #fff8f9;
+  border-color: var(--primary-pink);
+}
+
+.btn-special {
+  background: var(--special-gradient);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(131, 24, 67, 0.35);
+}
+
+.btn-special:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(131, 24, 67, 0.5);
+}
+
+/* WhatsApp Buttons */
+.btn-whatsapp {
+  background: var(--whatsapp-gradient);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+  font-weight: 700;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+}
+
+.btn-claim {
+  background: var(--gold-gradient);
+  color: #ffffff;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn-claim:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.45);
+}
+
+.btn-wp-inline {
+  background: var(--whatsapp-gradient);
+  color: #ffffff;
+  font-size: 0.88rem;
+  padding: 10px 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-pink);
+  border: 2px dashed var(--primary-pink);
+  padding: 12px 24px;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 75, 114, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-large {
+  padding: 16px 32px;
+  font-size: 1.15rem;
+}
+
+.btn-sm {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   MARQUEE LOVE TICKER
+   ========================================================================== */
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  padding: 14px 0;
+  border-radius: 40px;
+  margin: 30px 0 50px;
+  box-shadow: 0 6px 20px rgba(255, 75, 114, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-content span {
+  display: inline-block;
+  padding: 0 25px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #be123c;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   SECTION COMMON STYLES
+   ========================================================================== */
+.section-container {
+  margin-bottom: 70px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary-pink);
+  background: #ffe3ea;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--romantic-deep);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: #6e2a44;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   TIMELINE SECTION (HAMARI STORY)
+   ========================================================================== */
+.timeline-container {
+  position: relative;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: linear-gradient(to bottom, #ff8da1, #ff4b72, #ec4899);
+  transform: translateX(-50%);
+  border-radius: 4px;
+}
+
+.timeline-card {
+  position: relative;
+  width: calc(50% - 35px);
+  margin-bottom: 45px;
+  padding: 24px 26px;
+  border-radius: 22px;
+}
+
+.left-card { left: 0; }
+.right-card { left: calc(50% + 35px); }
+
+.timeline-dot {
+  position: absolute;
+  top: 24px;
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border: 3px solid var(--primary-pink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.35);
+  z-index: 3;
+}
+
+.left-card .timeline-dot { right: -57px; }
+.right-card .timeline-dot { left: -57px; }
+
+.card-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-pink);
+  background: #fff0f3;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--romantic-deep);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.card-text {
+  font-size: 0.98rem;
+  color: #551c33;
+  margin-bottom: 16px;
+}
+
+/* Chat Mockup */
+.chat-bubble-mockup {
+  background: #fdf2f4;
+  padding: 14px;
+  border-radius: 16px;
+  margin-bottom: 14px;
+  border: 1px dashed #ffccd6;
+}
+
+.chat-msg {
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.chat-msg:last-child { margin-bottom: 0; }
+
+.chat-sender {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.chat-in {
+  background: #ffffff;
+  color: #333;
+  border-left: 3px solid #ff4b72;
+}
+
+.chat-in .chat-sender { color: #ff4b72; }
+
+.chat-out {
+  background: #ffe3ea;
+  color: #4a0e2e;
+  border-left: 3px solid #db2777;
+}
+
+.chat-out .chat-sender { color: #db2777; }
+
+.highlight-msg {
+  background: #fff8db;
+  border-left: 3px solid #f59e0b;
+}
+
+.highlight-msg .chat-sender { color: #d97706; }
+
+.cute-pill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.cute-pill-tags span {
+  background: #ffffff;
+  border: 1px solid #ffd4de;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9f1239;
+}
+
+.celebration-box {
+  background: var(--gold-gradient);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.card-reaction {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #be123c;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   ROMANTIC SHAYARI SECTION
+   ========================================================================== */
+.shayari-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-bottom: 20px;
+}
+
+.shayari-card {
+  padding: 28px 24px;
+  text-align: center;
+  border: 2px solid #fed7aa;
+  background: linear-gradient(135deg, #ffffff 0%, #fffdfa 100%);
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.1);
+}
+
+.shayari-card:hover {
+  transform: translateY(-5px);
+  border-color: #f59e0b;
+  box-shadow: 0 15px 35px rgba(245, 158, 11, 0.25);
+}
+
+.shayari-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #d97706;
+  background: #fef3c7;
+  padding: 4px 14px;
+  border-radius: 14px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.shayari-lines {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  line-height: 1.7;
+  color: #451a03;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.shayari-footer {
+  font-family: var(--font-script);
+  font-size: 1.4rem;
+  color: #be123c;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   REAL VIDEO MEMORY PLAYER CARD
+   ========================================================================== */
+.video-memory-card {
+  padding: 30px 22px;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 40px;
+  border: 2px solid #ffccd6;
+  background: #ffffff;
+}
+
+.video-card-header {
+  margin-bottom: 20px;
+}
+
+.video-icon {
+  font-size: 2.5rem;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.video-card-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #831843;
+  margin-bottom: 4px;
+}
+
+.video-card-header p {
+  font-size: 0.95rem;
+  color: #7c2d4d;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: #000000;
+}
+
+.video-wrapper video {
+  width: 100%;
+  max-height: 480px;
+  display: block;
+  object-fit: contain;
+  background: #000000;
+}
+
+/* ==========================================================================
+   POLAROID MEMORY PHOTO WALL
+   ========================================================================== */
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-bottom: 25px;
+}
+
+.polaroid-card {
+  background: #ffffff;
+  padding: 14px 14px 22px;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.polaroid-card:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 18px 40px rgba(255, 75, 114, 0.25);
+  z-index: 5;
+}
+
+.tilt-left { transform: rotate(-3deg); }
+.tilt-right { transform: rotate(3deg); }
+
+.polaroid-pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.polaroid-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.polaroid-card:hover .polaroid-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.polaroid-caption {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  text-align: center;
+  color: #3e1929;
+  font-weight: 700;
+}
+
+.photo-upload-helper {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.helper-text {
+  font-size: 0.85rem;
+  color: #8c3b5b;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   NICKNAME JAR / SWEETS GRID
+   ========================================================================== */
+.nickname-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.nick-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ffe1e8;
+  border-radius: 22px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 20px rgba(255, 75, 114, 0.08);
+}
+
+.nick-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--primary-pink);
+  box-shadow: 0 16px 35px rgba(255, 75, 114, 0.25);
+  background: #ffffff;
+}
+
+.nick-icon {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.nick-card:hover .nick-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.nick-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--romantic-deep);
+  margin-bottom: 6px;
+}
+
+.nick-hint {
+  font-size: 0.82rem;
+  color: var(--primary-pink);
+  font-weight: 600;
+}
+
+.card-sparkle {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   UNBOXING 3D VIRTUAL GIFT BOX & CLAIMABLE COUPONS
+   ========================================================================== */
+.gift-box-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gift-box {
+  width: 170px;
+  height: 170px;
+  margin: 20px auto 40px;
+  position: relative;
+  cursor: pointer;
+  perspective: 800px;
+  transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+  transform: scale(1.08);
+}
+
+.box-lid {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 110%;
+  height: 45px;
+  background: linear-gradient(135deg, #e11d48, #be123c);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ribbon-bow {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.box-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 135px;
+  background: linear-gradient(135deg, #ff4b72, #e11d48);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 15px 35px rgba(225, 29, 72, 0.35);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-ribbon-vertical {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 100%;
+  background: var(--gold-gradient);
+}
+
+.box-ribbon-horizontal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 32px;
+  background: var(--gold-gradient);
+}
+
+.box-tag {
+  position: absolute;
+  bottom: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #be123c;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Revealed Gift Container */
+.revealed-gift {
+  display: none;
+  animation: zoomFadeIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes zoomFadeIn {
+  0% { opacity: 0; transform: scale(0.7) translateY(40px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Certificate Style */
+.certificate-card {
+  padding: 35px 25px;
+  border: 3px solid #f59e0b;
+  position: relative;
+  background: #ffffff;
+  margin-bottom: 35px;
+  box-shadow: 0 15px 40px rgba(245, 158, 11, 0.2);
+}
+
+.cert-ribbon-badge {
+  position: absolute;
+  top: -14px;
+  right: 25px;
+  background: var(--gold-gradient);
+  color: #ffffff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.trophy-icon {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.cert-subtitle {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d97706;
+}
+
+.cert-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: #831843;
+  margin: 10px 0;
+}
+
+.cert-recipient {
+  font-size: 1.25rem;
+  color: var(--primary-pink);
+  margin-bottom: 15px;
+}
+
+.cert-divider {
+  width: 120px;
+  height: 3px;
+  background: var(--gold-gradient);
+  margin: 15px auto;
+  border-radius: 2px;
+}
+
+.cert-desc {
+  font-size: 1.02rem;
+  color: #551c33;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 25px;
+}
+
+.cert-signatures {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px dashed #fed7aa;
+  padding-top: 18px;
+  margin-bottom: 20px;
+}
+
+.sig-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.sig-label {
+  font-size: 0.75rem;
+  color: #9a3412;
+  font-weight: 600;
+}
+
+.sig-val {
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #be123c;
+}
+
+.cert-claim-action {
+  margin-top: 15px;
+}
+
+/* Claimable Coupons Grid */
+.coupons-heading h4 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--romantic-deep);
+  margin-bottom: 6px;
+}
+
+.coupons-subtext {
+  font-size: 0.95rem;
+  color: #6e2a44;
+  margin-bottom: 22px;
+}
+
+.coupons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.coupon-item {
+  background: #fffdf5;
+  border: 2px dashed #f59e0b;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: left;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);
+}
+
+.coupon-item.claimed {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  border-style: solid;
+}
+
+.coupon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.coupon-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: #f59e0b;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.claim-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: #fed7aa;
+  color: #9a3412;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.claim-badge.claimed {
+  background: #bbf7d0;
+  color: #15803d;
+}
+
+.coupon-item h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #78350f;
+  margin-bottom: 6px;
+}
+
+.coupon-item p {
+  font-size: 0.88rem;
+  color: #854d0e;
+  margin-bottom: 14px;
+}
+
+.coupon-action-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.claim-all-box {
+  margin: 25px 0 15px;
+}
+
+/* ==========================================================================
+   NEW PAMPER PROMO CARD
+   ========================================================================== */
+.pamper-promo-card {
+  padding: 35px 25px;
+  text-align: center;
+  border: 2px solid #ff8da1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 227, 234, 0.9));
+  margin-bottom: 65px;
+}
+
+.promo-badge {
+  background: var(--special-gradient);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.promo-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  color: #831843;
+  margin-bottom: 12px;
+}
+
+.promo-text {
+  font-size: 1.05rem;
+  color: #551c33;
+  margin-bottom: 22px;
+}
+
+/* ==========================================================================
+   LOVE ENVELOPE & LETTER SECTION
+   ========================================================================== */
+.envelope-outer {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope {
+  width: 100%;
+  max-width: 520px;
+  height: 320px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff4b72 100%);
+  border-radius: 18px;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(255, 75, 114, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  z-index: 5;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  color: #ffffff;
+  z-index: 3;
+}
+
+.envelope-stamp {
+  align-self: flex-end;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px dashed #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.envelope-address {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.tap-notice {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: 600;
+  animation: pulseGlow 2s infinite;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65px;
+  height: 65px;
+  background: #be123c;
+  border: 3px solid #fecdd3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 6;
+  transition: transform 0.4s ease;
+}
+
+.envelope:hover .envelope-seal {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* The Sliding Letter Paper */
+.letter-paper {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  max-width: 560px;
+  background: #fffdfa;
+  border: 1px solid #fed7aa;
+  border-radius: 18px;
+  padding: 35px 28px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.letter-paper.open {
+  display: block;
+  opacity: 1;
+  position: relative;
+  top: 0;
+  transform: translateY(0);
+  margin-top: 20px;
+}
+
+.letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed #fed7aa;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: #9a3412;
+  font-weight: 700;
+}
+
+.letter-body {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: #3e1929;
+}
+
+.letter-salutation {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #be123c;
+  margin-bottom: 12px;
+}
+
+.letter-body p {
+  margin-bottom: 14px;
+}
+
+.letter-sign {
+  text-align: right;
+  margin-top: 25px;
+}
+
+.sign-name {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #be123c;
+}
+
+/* ==========================================================================
+   ANNIVERSARY CAKE & CANDLE
+   ========================================================================== */
+.cake-container {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cake-visual {
+  width: 260px;
+  margin: 40px auto 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.cake-visual:hover {
+  transform: scale(1.04);
+}
+
+.candle {
+  position: relative;
+  width: 14px;
+  height: 45px;
+  background: repeating-linear-gradient(45deg, #ffffff, #ffffff 6px, #ff4b72 6px, #ff4b72 12px);
+  border-radius: 4px;
+  z-index: 5;
+  margin-bottom: -4px;
+}
+
+.flame {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 28px;
+  background: radial-gradient(ellipse at bottom, #ffea00 0%, #ff6600 60%, transparent 100%);
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 20px #ff6600, 0 0 35px #ffcc00;
+  animation: flicker 1s infinite alternate ease-in-out;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+  50% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+  100% { transform: translateX(-50%) scale(0.95) rotate(-1deg); }
+}
+
+.smoke {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: rgba(180, 180, 180, 0.7);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tier {
+  border-radius: 14px 14px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tier-top {
+  width: 140px;
+  height: 50px;
+  background: #ff85a1;
+  z-index: 4;
+}
+
+.tier-middle {
+  width: 200px;
+  height: 60px;
+  background: #ff5c8a;
+  z-index: 3;
+}
+
+.tier-bottom {
+  width: 260px;
+  height: 70px;
+  background: #ff3366;
+  z-index: 2;
+}
+
+.tier-banner {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.tier-frosting {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cake-plate {
+  width: 300px;
+  height: 14px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  margin-top: 4px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.wish-status {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--romantic-deep);
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.15);
+  margin-top: 15px;
+}
+
+/* ==========================================================================
+   PROPOSAL QUESTION (RUNAWAY BUTTON)
+   ========================================================================== */
+.proposal-section {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 45px 20px;
+  border-radius: 30px;
+  border: 2px dashed #ff99b0;
+  position: relative;
+}
+
+.proposal-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  min-height: 100px;
+  margin-top: 25px;
+}
+
+#noBtn {
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+
+.proposal-result {
+  margin-top: 25px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #be123c;
+  display: none;
+  animation: zoomFadeIn 0.5s ease forwards;
+}
+
+/* ==========================================================================
+   PAMPER HUB: MOOD SPINNER WHEEL
+   ========================================================================== */
+.wheel-box {
+  padding: 35px 20px;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.wheel-wrapper {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  margin: 0 auto 30px;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.2rem;
+  color: #be123c;
+  z-index: 10;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25));
+}
+
+.wheel-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255, 75, 114, 0.35);
+  border: 6px solid #ffffff;
+  transition: transform 4.5s cubic-bezier(0.15, 0.9, 0.2, 1);
+}
+
+.wheel-spin-center-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--special-gradient);
+  color: #ffffff;
+  border: 4px solid #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 0.9rem;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.wheel-spin-center-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.wheel-result-card {
+  background: #ffffff;
+  border: 2px solid #ff4b72;
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 20px;
+  animation: zoomFadeIn 0.5s ease forwards;
+}
+
+.result-badge {
+  background: var(--gold-gradient);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.result-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: #831843;
+  margin-bottom: 8px;
+}
+
+.result-desc {
+  font-size: 1rem;
+  color: #551c33;
+  margin-bottom: 18px;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   PAMPER HUB: 7 SACRED VOWS
+   ========================================================================== */
+.vows-counter-badge {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #be123c;
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  padding: 8px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.15);
+  border: 1px solid #ffccd6;
+}
+
+.vows-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.vow-card {
+  padding: 24px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #ffe1e8;
+  background: #ffffff;
+}
+
+.vow-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-pink);
+  box-shadow: 0 15px 30px rgba(255, 75, 114, 0.2);
+}
+
+.vow-card.sealed {
+  background: #fff8f9;
+  border-color: #be123c;
+}
+
+.vow-num {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary-pink);
+  background: #fff0f3;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.vow-heading {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--romantic-deep);
+  margin-bottom: 10px;
+}
+
+.vow-text {
+  font-size: 0.95rem;
+  color: #551c33;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.vow-seal-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-pink);
+}
+
+.vow-card.sealed .vow-seal-btn {
+  color: #15803d;
+}
+
+/* ==========================================================================
+   PAMPER HUB: LOVE QUIZ
+   ========================================================================== */
+.quiz-card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 35px 25px;
+  background: #ffffff;
+  border: 2px solid #fed7aa;
+}
+
+.quiz-progress {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #d97706;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.quiz-q-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: #831843;
+  margin-bottom: 22px;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-opt-btn {
+  background: #fffdfa;
+  border: 2px solid #fed7aa;
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a0e2e;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quiz-opt-btn:hover {
+  background: #fff8eb;
+  border-color: #f59e0b;
+  transform: translateX(4px);
+}
+
+.quiz-opt-btn.correct {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #15803d;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   EXPRESS 1-TAP WHATSAPP MESSAGES
+   ========================================================================== */
+.express-wp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.express-wp-card {
+  background: #ffffff;
+  border: 2px solid #bbf7d0;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.1);
+}
+
+.express-wp-card:hover {
+  transform: translateY(-4px);
+  border-color: #25D366;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
+}
+
+.exp-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.exp-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #065f46;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.anniversary-footer {
+  text-align: center;
+  padding: 40px 10px 20px;
+  color: #7c2d4d;
+}
+
+.footer-hearts {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  animation: floatBounce 3s infinite ease-in-out;
+}
+
+.footer-tagline {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.footer-sub {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   NICKNAME MODAL POPUP
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 8, 28, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-backdrop.active {
+  display: flex;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 35px 28px;
+  text-align: center;
+  position: relative;
+  animation: zoomFadeIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: #ffffff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: #fff0f3;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #be123c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #be123c;
+  color: #ffffff;
+}
+
+.modal-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #831843;
+  margin-bottom: 8px;
+}
+
+.modal-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--primary-pink);
+  margin: 12px auto 16px;
+  border-radius: 2px;
+}
+
+.modal-text {
+  font-size: 1.15rem;
+  color: #4a0e2e;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.modal-extra {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #be123c;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   ANIMATIONS & RESPONSIVE DESIGN (MOBILE FIRST POLISH)
+   ========================================================================== */
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px;
+  }
+  .top-nav-bar {
+    padding: 0 12px;
+  }
+  .brand-badge {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .timeline-container::before {
+    left: 20px;
+  }
+  .timeline-card {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 55px;
+    margin-bottom: 30px;
+  }
+  .timeline-dot {
+    left: 0 !important;
+    right: auto !important;
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    top: 20px;
+  }
+  .coupons-grid {
+    grid-template-columns: 1fr;
+  }
+  .music-pill .music-text {
+    display: none;
+  }
+  .music-pill {
+    padding: 8px 12px;
+  }
+  .proposal-actions {
+    flex-direction: column;
+    min-height: 140px;
+  }
+  .wheel-wrapper {
+    width: 290px;
+    height: 290px;
+  }
+  #wheelCanvas {
+    width: 290px !important;
+    height: 290px !important;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -316,6 +2427,1017 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <script>
+/**
+ * ANNIVERSARY SURPRISE ENGINE (V3 - REAL MEMORIES & RESPECTFUL TONE)
+ * Dedicated to Axat & His Cutest Wifiji 💖
+ * 3 Magical Years Together (16 November)
+ */
+
+// ==========================================================================
+// 1. WEB AUDIO ROMANTIC SYNTHESIZER & SOUND EFFECTS
+// ==========================================================================
+class RomanticAudioEngine {
+  constructor() {
+    this.ctx = null;
+    this.isPlaying = false;
+    this.timer = null;
+    this.step = 0;
+    
+    // Soothing Romantic Chords (Fmaj7 -> G -> Em7 -> Am7)
+    this.chordNotes = [
+      [174.61, 220.00, 261.63, 329.63], // Fmaj7
+      [196.00, 246.94, 293.66, 392.00], // G
+      [164.81, 196.00, 246.94, 329.63], // Em7
+      [220.00, 261.63, 329.63, 440.00]  // Am7
+    ];
+
+    this.melodyNotes = [
+      523.25, 587.33, 659.25, 783.99, 880.00, 659.25, 587.33, 523.25
+    ];
+  }
+
+  init() {
+    if (!this.ctx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      this.ctx = new AudioContext();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  playTone(freq, type = 'sine', duration = 1.2, gainLevel = 0.08, delay = 0) {
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime + delay;
+
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, now);
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(gainLevel, now + 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + duration + 0.1);
+  }
+
+  toggleMusic() {
+    this.init();
+    if (this.isPlaying) {
+      this.stopMusic();
+    } else {
+      this.startMusic();
+    }
+    return this.isPlaying;
+  }
+
+  startMusic() {
+    this.isPlaying = true;
+    this.step = 0;
+    this.scheduleNextBar();
+  }
+
+  scheduleNextBar() {
+    if (!this.isPlaying || !this.ctx) return;
+
+    const currentChord = this.chordNotes[this.step % this.chordNotes.length];
+    
+    currentChord.forEach((note, idx) => {
+      this.playTone(note, 'sine', 2.8, 0.045, idx * 0.08);
+    });
+
+    const melodyNote = this.melodyNotes[Math.floor(Math.random() * this.melodyNotes.length)];
+    this.playTone(melodyNote, 'triangle', 1.8, 0.06, 0.4);
+    
+    const secondMelody = this.melodyNotes[Math.floor(Math.random() * this.melodyNotes.length)];
+    this.playTone(secondMelody, 'sine', 1.6, 0.05, 1.2);
+
+    this.step++;
+    this.timer = setTimeout(() => this.scheduleNextBar(), 2400);
+  }
+
+  stopMusic() {
+    this.isPlaying = false;
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+  }
+
+  playEnvelopeSound() {
+    this.init();
+    const notes = [440, 554.37, 659.25, 880];
+    notes.forEach((n, i) => this.playTone(n, 'triangle', 0.8, 0.08, i * 0.08));
+  }
+
+  playFanfare() {
+    this.init();
+    const fanfareNotes = [523.25, 659.25, 783.99, 1046.50];
+    fanfareNotes.forEach((n, i) => this.playTone(n, 'sine', 1.2, 0.1, i * 0.12));
+    setTimeout(() => {
+      [783.99, 1046.50, 1318.51].forEach((n, i) => this.playTone(n, 'triangle', 1.8, 0.12, i * 0.06));
+    }, 550);
+  }
+
+  playCandleBlow() {
+    this.init();
+    [880, 1174.66, 1318.51].forEach((n, i) => this.playTone(n, 'sine', 1.5, 0.07, i * 0.1));
+  }
+
+  playPop() {
+    this.init();
+    this.playTone(587.33, 'triangle', 0.5, 0.09, 0);
+    this.playTone(880.00, 'sine', 0.6, 0.07, 0.08);
+  }
+
+  playTick() {
+    this.init();
+    this.playTone(1200, 'sine', 0.08, 0.04, 0);
+  }
+}
+
+const audio = new RomanticAudioEngine();
+
+// UI Music Toggle
+const musicToggleBtn = document.getElementById('musicToggleBtn');
+const musicIcon = document.getElementById('musicIcon');
+const musicLabel = document.getElementById('musicLabel');
+const musicEq = document.getElementById('musicEq');
+
+if (musicToggleBtn) {
+  musicToggleBtn.addEventListener('click', () => {
+    const isPlaying = audio.toggleMusic();
+    if (isPlaying) {
+      musicIcon.textContent = '💖';
+      if (musicLabel) musicLabel.textContent = 'Playing Music';
+      musicEq.classList.add('playing');
+    } else {
+      musicIcon.textContent = '🎵';
+      if (musicLabel) musicLabel.textContent = 'Romantic Tune';
+      musicEq.classList.remove('playing');
+    }
+  });
+}
+
+// Touch or click anywhere initializes audio context for mobile policies
+['click', 'touchstart'].forEach(evt => {
+  document.addEventListener(evt, function initAudioOnce() {
+    audio.init();
+    document.removeEventListener(evt, initAudioOnce);
+  }, { once: true });
+});
+
+
+// ==========================================================================
+// 2. WHATSAPP DIRECT SHARE HELPER
+// ==========================================================================
+function openWhatsApp(messageText) {
+  const encodedText = encodeURIComponent(messageText);
+  const waUrl = `https://api.whatsapp.com/send?text=${encodedText}`;
+  window.open(waUrl, '_blank');
+}
+
+function shareTrophyOnWhatsApp() {
+  audio.playFanfare();
+  const msg = `🏆 Hii Axat ji! 💖\n\nDekhiye mujhe humari anniversary website par officially "WORLD'S BESTEST WIFIJI AWARD" mil gaya hai! 👑✨\n\nAxat ne issue kiya hai aur validity poore 7 Janam tak ki hai! Happy 3rd Anniversary! 💍🥰`;
+  openWhatsApp(msg);
+}
+
+function sendCouponWhatsApp(msg) {
+  audio.playPop();
+  openWhatsApp(msg);
+}
+
+function sendLetterReplyWhatsApp() {
+  audio.playPop();
+  const msg = `Mere Pyare Axat! 💌💖\n\nMaine aapka dil se likha prem patra padh liya! Wo suggestion me aayi profile aur ladki ki ID se shuru hua safar sach me meri zindagi ka sabse pyara hissa hai. 3 saal complete ho gaye aur agle 7 janam tak main sirf aapki hu! I love you so much! 🥰💍`;
+  openWhatsApp(msg);
+}
+
+function sendShayariWhatsApp() {
+  audio.playPop();
+  const msg = `Mere Pyare Axat! ✍️💖\n\nMaine humari anniversary website par aapka likha hua Shayari Session padha! Bohot hi zyada dil ko chhoo lene wali lines hain: "Aapki muskaan me basti hai meri poori duniya..." 🥰✨\n\nHappy 3rd Anniversary! I love you endlessly! 🌸💍`;
+  openWhatsApp(msg);
+}
+
+function sendExpressWhatsApp(msg) {
+  audio.playPop();
+  openWhatsApp(msg);
+}
+
+
+// ==========================================================================
+// 3. COUPONS CLAIM SYSTEM & STATE
+// ==========================================================================
+function claimCoupon(id, name, wpMsg) {
+  audio.playFanfare();
+
+  const couponEl = document.getElementById(`coupon-${id}`);
+  const badgeEl = document.getElementById(`badge-${id}`);
+  const wpBtn = document.getElementById(`wp-btn-${id}`);
+
+  if (couponEl) couponEl.classList.add('claimed');
+  if (badgeEl) {
+    badgeEl.textContent = 'CLAIMED ✅';
+    badgeEl.classList.add('claimed');
+  }
+  if (wpBtn) wpBtn.style.display = 'inline-flex';
+
+  try {
+    localStorage.setItem(`anniversary_coupon_${id}`, 'claimed');
+  } catch(e) {}
+
+  if (couponEl) {
+    const rect = couponEl.getBoundingClientRect();
+    burstHearts(rect.left + rect.width / 2, rect.top + rect.height / 2, 25);
+  }
+}
+
+function claimAllCouponsAndShare() {
+  audio.playFanfare();
+
+  for (let i = 1; i <= 4; i++) {
+    const couponEl = document.getElementById(`coupon-${i}`);
+    const badgeEl = document.getElementById(`badge-${i}`);
+    const wpBtn = document.getElementById(`wp-btn-${i}`);
+
+    if (couponEl) couponEl.classList.add('claimed');
+    if (badgeEl) {
+      badgeEl.textContent = 'CLAIMED ✅';
+      badgeEl.classList.add('claimed');
+    }
+    if (wpBtn) wpBtn.style.display = 'inline-flex';
+    try {
+      localStorage.setItem(`anniversary_coupon_${i}`, 'claimed');
+    } catch(e) {}
+  }
+
+  burstHearts(window.innerWidth / 2, window.innerHeight / 2, 45);
+
+  const fullWishlistMsg = `🎁 Hii Axat ji! 💖\n\nMaine humari 3rd Anniversary ke SAARE 4 GOLDEN COUPONS ek sath CLAIM kar liye hain:\n\n1. 🧸 Unlimited Hugs & Pampering\n2. 🚗🍦 Midnight Long Drive & Favourite Food\n3. 👑 "Wifiji Is Always Right" Master Pass\n4. 👸✨ Lifetime Princess Treatment\n\nAb jaldi se ready ho jaiye aur in sabko redeem kijiye! Happy 3rd Anniversary! 💍🥰`;
+  
+  setTimeout(() => {
+    openWhatsApp(fullWishlistMsg);
+  }, 500);
+}
+
+// Restore claimed coupons on load
+window.addEventListener('DOMContentLoaded', () => {
+  for (let i = 1; i <= 4; i++) {
+    try {
+      if (localStorage.getItem(`anniversary_coupon_${i}`) === 'claimed') {
+        const couponEl = document.getElementById(`coupon-${i}`);
+        const badgeEl = document.getElementById(`badge-${i}`);
+        const wpBtn = document.getElementById(`wp-btn-${i}`);
+        if (couponEl) couponEl.classList.add('claimed');
+        if (badgeEl) {
+          badgeEl.textContent = 'CLAIMED ✅';
+          badgeEl.classList.add('claimed');
+        }
+        if (wpBtn) wpBtn.style.display = 'inline-flex';
+      }
+    } catch(e) {}
+  }
+});
+
+
+// ==========================================================================
+// 4. FLOATING PARTICLES CANVAS
+// ==========================================================================
+const canvas = document.getElementById('heartCanvas');
+let ctx = canvas ? canvas.getContext('2d') : null;
+let width, height;
+let hearts = [];
+
+if (canvas && ctx) {
+  function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class FloatingHeart {
+    constructor(x, y, isBurst = false) {
+      this.x = x || Math.random() * width;
+      this.y = y || height + 20;
+      this.size = Math.random() * 18 + 10;
+      this.speedY = isBurst ? (Math.random() - 0.5) * 8 : -(Math.random() * 1.5 + 0.8);
+      this.speedX = isBurst ? (Math.random() - 0.5) * 8 : Math.sin(Math.random() * Math.PI) * 1 - 0.5;
+      this.opacity = 1;
+      this.fade = isBurst ? Math.random() * 0.02 + 0.015 : Math.random() * 0.004 + 0.002;
+      this.color = ['#ff4b72', '#ff758c', '#ff8da1', '#ffb3c1', '#f43f5e', '#ec4899'][Math.floor(Math.random() * 6)];
+      this.rotation = Math.random() * Math.PI;
+      this.rotSpeed = (Math.random() - 0.5) * 0.04;
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.scale(this.size / 20, this.size / 20);
+      ctx.fillStyle = this.color;
+      ctx.globalAlpha = Math.max(0, this.opacity);
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(-10, -10, -20, 5, 0, 20);
+      ctx.bezierCurveTo(20, 5, 10, -10, 0, 0);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
+      this.rotation += this.rotSpeed;
+      this.opacity -= this.fade;
+    }
+  }
+
+  function spawnAmbientHearts() {
+    if (hearts.length < 32) {
+      hearts.push(new FloatingHeart());
+    }
+  }
+
+  window.burstHearts = function(x, y, count = 20) {
+    for (let i = 0; i < count; i++) {
+      hearts.push(new FloatingHeart(x, y, true));
+    }
+  };
+
+  function animateHearts() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = hearts.length - 1; i >= 0; i--) {
+      const h = hearts[i];
+      h.update();
+      h.draw();
+      if (h.opacity <= 0 || h.y < -50 || h.y > height + 60 || h.x < -50 || h.x > width + 50) {
+        hearts.splice(i, 1);
+      }
+    }
+
+    requestAnimationFrame(animateHearts);
+  }
+  setInterval(spawnAmbientHearts, 400);
+  animateHearts();
+
+  window.addEventListener('click', (e) => {
+    if (e.target.closest('.modal-card') || e.target.closest('.btn') || e.target.closest('video')) return;
+    burstHearts(e.clientX, e.clientY, 8);
+  });
+} else {
+  window.burstHearts = function() {};
+}
+
+
+// ==========================================================================
+// 5. LIVE ANNIVERSARY COUNTER (3 YEARS & COUNTING)
+// ==========================================================================
+const startDate = new Date();
+startDate.setFullYear(startDate.getFullYear() - 3);
+startDate.setHours(0, 0, 0, 0);
+
+function updateAnniversaryCounter() {
+  const now = new Date();
+  const diffMs = now - startDate;
+
+  const totalSeconds = Math.floor(diffMs / 1000);
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const totalHours = Math.floor(totalMinutes / 60);
+  const totalDays = Math.floor(totalHours / 24);
+
+  const daysEl = document.getElementById('daysCount');
+  const hoursEl = document.getElementById('hoursCount');
+  const minutesEl = document.getElementById('minutesCount');
+  const secondsEl = document.getElementById('secondsCount');
+
+  if (daysEl) daysEl.textContent = totalDays.toLocaleString();
+  if (hoursEl) hoursEl.textContent = totalHours.toLocaleString();
+  if (minutesEl) minutesEl.textContent = totalMinutes.toLocaleString();
+  if (secondsEl) secondsEl.textContent = totalSeconds.toLocaleString();
+}
+setInterval(updateAnniversaryCounter, 1000);
+updateAnniversaryCounter();
+
+
+// ==========================================================================
+// 6. NICKNAME MODAL CONTENT & INTERACTIONS (RESPECTFUL TONE)
+// ==========================================================================
+const nicknameData = {
+  cutiepie: {
+    emoji: "🧁",
+    title: "Meri Cutiepie",
+    text: "Aapki wo innocent smile, jab aap thoda sa shy karti hain ya bina baat ke hasne lagti hain... duniya ki sabse cutiepie cheez wahi hai! Mere chehre par instant muskaan lane ka remote control hamesha aapke paas rehta hai.",
+    extra: "Cutest Smile in the Entire Universe! ✨🥰"
+  },
+  prinsessji: {
+    emoji: "👑",
+    title: "My Prinsessji",
+    text: "Mere dil ke mahal ki sabse pyari sehzadi! Chahe hum kitne bhi saal sath rahein, aapka status mere liye hamesha 'Royal Princess' ka hi rahega. Aapko har lamha pamper karna mera favourite kaam hai!",
+    extra: "Princess Treatment: Active for Lifetime 💖"
+  },
+  bestest_wifiji: {
+    emoji: "💍",
+    title: "My Bestest Wifji",
+    text: "Profile suggestion me aayi thi aur wahan se dosti hui... par aaj aap meri sabse best friend, sabse pyari confidante aur meri bestest wifiji ban chuki hain! Aapke jaisi samajhdar aur caring partner sirf kismat walon ko milti hai.",
+    extra: "Best Life Partner Ever Award Winner 🏆"
+  },
+  janmo_sathi: {
+    emoji: "♾️",
+    title: "Mere Janmo Janmo Kie Sathi",
+    text: "Kal 3 saal pure ho rahe hain humare sath hone ko... par ye toh sirf ek shuruat hai! Maine rab se aane wale 7 janmo ke liye sirf aur sirf aapko maang liya hai. Har janam me Axat sirf aapka hi rahega!",
+    extra: "7 Janam & Infinity To Go! 💍❤️"
+  },
+  my_everything: {
+    emoji: "🌍",
+    title: "My Everything",
+    text: "Subah aankh khulte hi pehla khayal aapka, din bhar ki choti-moti baaton me zikr aapka, aur raat ko sone se pehle ki aakhri dua aapki salamati ki. Sach me, aap mera sab kuch hain!",
+    extra: "My World, My Heart, My Forever 💫"
+  },
+  my_baby: {
+    emoji: "🍼",
+    title: "My Baby",
+    text: "Jab aap bachon ki tarah zid karti hain, choti baaton par ruth jaati hain aur phir gale lag jaati hain... tab mujhe lagta hai ki is duniya me aapse zyada pyaara aur koi nahi ho sakta!",
+    extra: "Pyara Baby jise Axat hamesha laad karega 🧸💕"
+  },
+  my_bavv: {
+    emoji: "🧸",
+    title: "My Bavv",
+    text: "Mera sabse pyara teddy bear! Jisse baat kiye bina din adhoora lagta hai aur jiske bina koi bhi khushi poori nahi lagti. Ek tight warm hug dekar sab theek karne wali meri Bavv!",
+    extra: "Endless Warm Hugs & Cuddles 🌸"
+  },
+  sehzadiji: {
+    emoji: "👸",
+    title: "My Sehzadiji",
+    text: "Aapki har ada me ek shahi nazaakat hai! Aap jab bhi bolti hain, lagta hai bas sunta rahu. Meri Sehzadiji ke har hukum ko sar aankhon par rakhna Axat ka farz hai!",
+    extra: "Shahi Hukum Hamesha Manzoor Hai! 👑💎"
+  },
+  gulabjamun: {
+    emoji: "🍯",
+    title: "Mera Gulabjamun",
+    text: "Itni soft, itni sweet aur chashni se bhari hui meri wifiji! Gusse me bhi aap itni sweet lagti hain ki dekh kar hi mera dil pighal jata hai. You are the sweetest delight of my life!",
+    extra: "100% Pure Sweetness, Zero Calorie Tension 😋🍯"
+  },
+  kajukatli: {
+    emoji: "🍬",
+    title: "Meri Kajukatli",
+    text: "Mithaiyon me jo jagah Kaju Katli ki hoti hai—sabse premium, sabse khaas aur sabki favourite—wahi jagah meri zindagi me aapki hai! You make every day feel like a festival.",
+    extra: "The Most Precious & Premium Sweetheart 💎🍬"
+  }
+};
+
+function openNickModal(key) {
+  const data = nicknameData[key];
+  if (!data) return;
+
+  audio.playPop();
+
+  document.getElementById('modalEmoji').textContent = data.emoji;
+  document.getElementById('modalTitle').textContent = data.title;
+  document.getElementById('modalText').textContent = data.text;
+  document.getElementById('modalExtra').textContent = data.extra;
+
+  const modal = document.getElementById('nickModal');
+  modal.classList.add('active');
+
+  burstHearts(window.innerWidth / 2, window.innerHeight / 2, 16);
+}
+
+function closeNickModal(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close') && !e.target.classList.contains('btn')) {
+    return;
+  }
+  const modal = document.getElementById('nickModal');
+  modal.classList.remove('active');
+}
+
+
+// ==========================================================================
+// 7. INTERACTIVE LOVE ENVELOPE (LETTER FROM AXAT)
+// ==========================================================================
+let isLetterOpen = false;
+
+function toggleLetter(e) {
+  if (e) e.stopPropagation();
+  const letterPaper = document.getElementById('letterPaper');
+
+  isLetterOpen = !isLetterOpen;
+
+  if (isLetterOpen) {
+    audio.playEnvelopeSound();
+    letterPaper.classList.add('open');
+    burstHearts(window.innerWidth / 2, window.innerHeight / 2, 20);
+    letterPaper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    letterPaper.classList.remove('open');
+  }
+}
+
+
+// ==========================================================================
+// 8. UNBOXING 3D VIRTUAL GIFT BOX
+// ==========================================================================
+let isGiftUnboxed = false;
+
+function unboxGift() {
+  if (isGiftUnboxed) return;
+  isGiftUnboxed = true;
+
+  audio.playFanfare();
+
+  const giftBox = document.getElementById('giftBox');
+  const revealedGift = document.getElementById('revealedGift');
+  const boxLid = giftBox.querySelector('.box-lid');
+
+  boxLid.style.transform = 'translateY(-80px) rotate(-25deg)';
+  boxLid.style.opacity = '0';
+
+  const rect = giftBox.getBoundingClientRect();
+  burstHearts(rect.left + rect.width / 2, rect.top + rect.height / 2, 40);
+
+  setTimeout(() => {
+    giftBox.style.display = 'none';
+    revealedGift.style.display = 'block';
+    revealedGift.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 400);
+}
+
+function reboxGift() {
+  isGiftUnboxed = false;
+  const giftBox = document.getElementById('giftBox');
+  const revealedGift = document.getElementById('revealedGift');
+  const boxLid = giftBox.querySelector('.box-lid');
+
+  revealedGift.style.display = 'none';
+  giftBox.style.display = 'block';
+  boxLid.style.transform = 'none';
+  boxLid.style.opacity = '1';
+}
+
+
+// ==========================================================================
+// 9. ANNIVERSARY CAKE & CANDLE BLOWING
+// ==========================================================================
+let candleBlown = false;
+
+function blowCandle() {
+  if (candleBlown) return;
+  candleBlown = true;
+
+  audio.playCandleBlow();
+
+  const flame = document.getElementById('candleFlame');
+  const smoke = document.getElementById('candleSmoke');
+  const wishStatus = document.getElementById('wishStatus');
+
+  flame.style.opacity = '0';
+  flame.style.animation = 'none';
+
+  smoke.style.opacity = '1';
+  smoke.style.transition = 'all 1.5s ease-out';
+  smoke.style.transform = 'translate(-50%, -40px) scale(3)';
+
+  const cakeRect = document.getElementById('cakeVisual').getBoundingClientRect();
+  burstHearts(cakeRect.left + cakeRect.width / 2, cakeRect.top + 30, 35);
+
+  setTimeout(() => {
+    smoke.style.opacity = '0';
+  }, 1200);
+
+  wishStatus.innerHTML = `
+    <div style="animation: zoomFadeIn 0.5s ease;">
+      <p style="font-size: 1.25rem; font-weight: 800; color: #be123c;">
+        🎉 WISH ACCEPTED BY THE STARS! ✨🌟
+      </p>
+      <p style="color: #6d2842; font-size: 1.05rem; margin-top: 6px;">
+        Axat promises to fulfill every single wish of his Cutest Wifiji today, tomorrow, and forever! 💖🎂
+      </p>
+    </div>
+  `;
+}
+
+
+// ==========================================================================
+// 10. PLAYFUL RUNAWAY PROPOSAL QUESTION
+// ==========================================================================
+const funnyDodgeMessages = [
+  "Sochungi thoda... 😜",
+  "Arrey aise kaise! 🙈",
+  "Axat se bachke kahan jayengi! 🤣",
+  "Pakad ke dikhaiye pehle! 🏃‍♀️💨",
+  "No escape! Sirf YES bolna padega! 💕",
+  "Suggestion me dekha tha, ab toh 7 janam sath rehna padega! 💍",
+  "Gulabjamun hain aap meri, na nahi bol sakti! 🍯"
+];
+
+let dodgeCount = 0;
+
+function dodgeButton() {
+  const noBtn = document.getElementById('noBtn');
+  const container = document.querySelector('.proposal-section');
+  if (!noBtn || !container) return;
+
+  dodgeCount++;
+  audio.playPop();
+
+  const containerRect = container.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+
+  const maxX = containerRect.width - btnRect.width - 60;
+  const randomX = (Math.random() - 0.5) * maxX;
+  const randomY = (Math.random() - 0.5) * 120;
+
+  noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+  const nextMsg = funnyDodgeMessages[dodgeCount % funnyDodgeMessages.length];
+  noBtn.querySelector('span').textContent = nextMsg;
+
+  const yesBtn = document.getElementById('yesBtn');
+  if (yesBtn) {
+    const currentScale = 1 + Math.min(dodgeCount * 0.08, 0.5);
+    yesBtn.style.transform = `scale(${currentScale})`;
+  }
+}
+
+function celebrateProposal() {
+  audio.playFanfare();
+
+  const resultDiv = document.getElementById('proposalResult');
+  const actionsDiv = document.querySelector('.proposal-actions');
+
+  if (actionsDiv) actionsDiv.style.display = 'none';
+
+  resultDiv.style.display = 'block';
+  resultDiv.innerHTML = `
+    <div style="background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 24px; border: 3px solid #ff4b72; box-shadow: 0 15px 40px rgba(255, 75, 114, 0.3);">
+      <div style="font-size: 3.5rem; margin-bottom: 12px;">💍👰‍♀️🤵‍♂️💖</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #831843; margin-bottom: 10px;">
+        IT'S AN ETERNAL PROMISE! ♾️
+      </h3>
+      <p style="font-size: 1.25rem; color: #be123c; font-weight: 700; margin-bottom: 12px;">
+        Wifiji is officially booked for 7 Janam by Axat!
+      </p>
+      <p style="font-size: 1.05rem; color: #551c33; max-width: 550px; margin: 0 auto 20px;">
+        Profile suggestion me dekh kar message kiya tha, par aaj aap meri sabse sachhi dua aur sabse pyari biwi hain. Happy 3rd Anniversary meri Cutiepie! 🌸🍯
+      </p>
+      <button class="btn btn-whatsapp" onclick="openWhatsApp('Hii Axat ji! 💖 Maine aapka proposal accept kar liya! Agle 7 Janam tak sirf aapki wifiji ban kar rahungi! 💍✨')">
+        <span>📲 Send 'YES FOR 7 LIFETIMES' on WhatsApp! 💖</span>
+      </button>
+    </div>
+  `;
+
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      burstHearts(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.7, 30);
+    }, i * 250);
+  }
+}
+
+
+// ==========================================================================
+// 11. LOCAL STORAGE PHOTO UPLOAD (FOR REAL MEMORIES)
+// ==========================================================================
+function handlePhotoUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const base64Data = e.target.result;
+    
+    const polaroidGrid = document.getElementById('polaroidGrid');
+    if (polaroidGrid) {
+      const newCard = document.createElement('div');
+      newCard.className = 'polaroid-card';
+      newCard.style.animation = 'zoomFadeIn 0.5s ease forwards';
+      newCard.innerHTML = `
+        <div class="polaroid-pin">📌</div>
+        <div class="polaroid-img-wrapper">
+          <img src="${base64Data}" alt="Axat and Wifiji Memory">
+        </div>
+        <p class="polaroid-caption">Humari Real Smile! 💖</p>
+      `;
+
+      polaroidGrid.prepend(newCard);
+    }
+
+    try {
+      localStorage.setItem('anniversary_custom_photo', base64Data);
+    } catch (err) {}
+
+    burstHearts(window.innerWidth / 2, window.innerHeight / 2, 25);
+  };
+  reader.readAsDataURL(file);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  try {
+    const savedPhoto = localStorage.getItem('anniversary_custom_photo');
+    const polaroidGrid = document.getElementById('polaroidGrid');
+    if (savedPhoto && polaroidGrid) {
+      const newCard = document.createElement('div');
+      newCard.className = 'polaroid-card';
+      newCard.innerHTML = `
+        <div class="polaroid-pin">📌</div>
+        <div class="polaroid-img-wrapper">
+          <img src="${savedPhoto}" alt="Axat and Wifiji Memory">
+        </div>
+        <p class="polaroid-caption">Humari Real Smile! 💖</p>
+      `;
+      polaroidGrid.prepend(newCard);
+    }
+  } catch (err) {}
+});
+
+
+// ==========================================================================
+// 12. PAMPER HUB: THE INTERACTIVE MOOD SPINNER WHEEL
+// ==========================================================================
+const wheelItems = [
+  { text: "15-Min Massage & Pamper 💆‍♀️", msg: "Hii Axat! 💆‍♀️ Maine Mood Wheel ghumaya aur aaya hai '15-Min Head Massage & Pampering'! Abhi shuru ho jaiye bina late kiye! 🥰" },
+  { text: "Midnight Coffee / Maggi ☕🍜", msg: "Axat ji! ☕🍜 Mood Wheel ne bola hai ki aaj aadhi raat ko aap mere liye special Coffee aur Maggi banayenge with extra love! 😋" },
+  { text: "Whatever In Cart Pass 🛍️", msg: "Hello Axat! 🛍️ Maine Wheel of Love me 'Whatever In My Cart Pass' jeet liya hai! Myntra / Amazon orders place karwaiye abhi! 😜✨" },
+  { text: "Forehead Kisses & Cuddles 😘", msg: "Axat! 😘 Mood Wheel order: Unlimited Forehead Kisses & Warm Tight Hugs right now! 🧸💖" },
+  { text: "Wifiji's Movie/Reels Night 🎬", msg: "Hii Axat! 🎬 Aaj movie ya shows sirf wifiji ki marzi ke chalenge, no cricket or action allowed! 🍿🥰" },
+  { text: "10 Sweet Things For Me 🍯", msg: "Mere Pyare Axat! 🍯 Mood Wheel bol raha hai ki abhi mujhe 10 reasons bataiye why I am your Gulabjamun & Kajukatli! 🍬💖" }
+];
+
+const wheelCanvas = document.getElementById('wheelCanvas');
+let wheelCtx = wheelCanvas ? wheelCanvas.getContext('2d') : null;
+let currentWheelAngle = 0;
+let isSpinning = false;
+let selectedWheelItem = null;
+
+const wheelColors = ['#ffccd5', '#ffe5d9', '#d8f3dc', '#e0c3fc', '#fde2e4', '#fff1e6'];
+
+function drawWheel() {
+  if (!wheelCanvas || !wheelCtx) return;
+
+  const numSlices = wheelItems.length;
+  const sliceAngle = (2 * Math.PI) / numSlices;
+  const radius = wheelCanvas.width / 2;
+
+  wheelCtx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+
+  for (let i = 0; i < numSlices; i++) {
+    const angle = i * sliceAngle;
+
+    wheelCtx.beginPath();
+    wheelCtx.moveTo(radius, radius);
+    wheelCtx.arc(radius, radius, radius, angle, angle + sliceAngle);
+    wheelCtx.closePath();
+    wheelCtx.fillStyle = wheelColors[i % wheelColors.length];
+    wheelCtx.fill();
+    wheelCtx.lineWidth = 2;
+    wheelCtx.strokeStyle = '#ffffff';
+    wheelCtx.stroke();
+
+    wheelCtx.save();
+    wheelCtx.translate(radius, radius);
+    wheelCtx.rotate(angle + sliceAngle / 2);
+    wheelCtx.textAlign = 'right';
+    wheelCtx.fillStyle = '#4a0e2e';
+    wheelCtx.font = 'bold 12px Outfit, sans-serif';
+    wheelCtx.fillText(wheelItems[i].text, radius - 18, 5);
+    wheelCtx.restore();
+  }
+}
+
+if (wheelCanvas) {
+  drawWheel();
+}
+
+function spinWheel() {
+  if (isSpinning) return;
+  isSpinning = true;
+
+  audio.init();
+  const spinBtn = document.getElementById('spinBtn');
+  const wheelCircle = document.getElementById('wheelCircle');
+  const resultCard = document.getElementById('wheelResultCard');
+
+  if (spinBtn) spinBtn.disabled = true;
+  if (resultCard) resultCard.style.display = 'none';
+
+  const extraRotations = 5 + Math.floor(Math.random() * 4);
+  const randomAngle = Math.floor(Math.random() * 360);
+  const totalDegrees = extraRotations * 360 + randomAngle;
+
+  currentWheelAngle += totalDegrees;
+  if (wheelCircle) {
+    wheelCircle.style.transform = `rotate(${currentWheelAngle}deg)`;
+  }
+
+  let tickInterval = setInterval(() => {
+    audio.playTick();
+  }, 120);
+
+  setTimeout(() => {
+    clearInterval(tickInterval);
+  }, 3500);
+
+  setTimeout(() => {
+    isSpinning = false;
+    if (spinBtn) spinBtn.disabled = false;
+
+    const normalizedAngle = (currentWheelAngle % 360);
+    const sliceAngleDeg = 360 / wheelItems.length;
+    const winningIndex = Math.floor(((360 - (normalizedAngle % 360) + 270) % 360) / sliceAngleDeg);
+    selectedWheelItem = wheelItems[winningIndex % wheelItems.length];
+
+    audio.playFanfare();
+    burstHearts(window.innerWidth / 2, window.innerHeight / 2, 35);
+
+    const titleEl = document.getElementById('wheelResultTitle');
+    const descEl = document.getElementById('wheelResultDesc');
+    if (titleEl) titleEl.textContent = selectedWheelItem.text;
+    if (descEl) descEl.textContent = "Yeh command Axat ko milna hi chahiye! Click button below to send on WhatsApp:";
+    if (resultCard) {
+      resultCard.style.display = 'block';
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 4500);
+}
+
+function spinAgain() {
+  const resultCard = document.getElementById('wheelResultCard');
+  if (resultCard) resultCard.style.display = 'none';
+  spinWheel();
+}
+
+function sendWheelResultWhatsApp() {
+  if (!selectedWheelItem) return;
+  audio.playPop();
+  openWhatsApp(selectedWheelItem.msg);
+}
+
+
+// ==========================================================================
+// 13. PAMPER HUB: AXAT'S 7 SACRED VOWS
+// ==========================================================================
+let sealedVows = {};
+
+function sealVow(num) {
+  audio.playPop();
+  sealedVows[num] = true;
+
+  const card = document.getElementById(`vow-${num}`);
+  const status = document.getElementById(`vow-status-${num}`);
+
+  if (card) card.classList.add('sealed');
+  if (status) status.textContent = 'Vow Sealed Forever! ❤️';
+
+  burstHearts(window.innerWidth / 2, window.innerHeight / 2, 18);
+
+  const countEl = document.getElementById('sealedVowsCount');
+  const totalSealed = Object.keys(sealedVows).length;
+  if (countEl) countEl.textContent = totalSealed;
+
+  try {
+    localStorage.setItem('sealed_vows', JSON.stringify(sealedVows));
+  } catch(e) {}
+}
+
+function shareVowsOnWhatsApp() {
+  audio.playFanfare();
+  const msg = `Axat mere pyare husband! 💍💖\n\nMaine humari 3rd Anniversary par aapke diye hue SAARE 7 SACRED VOWS accept kar liye hain:\n\n1. Smile ki hifazat ❤️\n2. Pehle manane aap aayenge 🙈\n3. Lifetime Princess Treatment 👑\n4. Hamesha Best Friends 🤝\n5. Midnight Cravings Doctor 🍦\n6. Gulabjamun & Kajukatli Care 🍯\n7. Agle 7 Janam Tak Sirf Axat ♾️\n\nHappy 3rd Anniversary! Rab ne banayi humari jodi! 🥰`;
+  openWhatsApp(msg);
+}
+
+// Restore sealed vows
+window.addEventListener('DOMContentLoaded', () => {
+  try {
+    const saved = localStorage.getItem('sealed_vows');
+    if (saved) {
+      sealedVows = JSON.parse(saved);
+      Object.keys(sealedVows).forEach(num => {
+        const card = document.getElementById(`vow-${num}`);
+        const status = document.getElementById(`vow-status-${num}`);
+        if (card) card.classList.add('sealed');
+        if (status) status.textContent = 'Vow Sealed Forever! ❤️';
+      });
+      const countEl = document.getElementById('sealedVowsCount');
+      if (countEl) countEl.textContent = Object.keys(sealedVows).length;
+    }
+  } catch(e) {}
+});
+
+
+// ==========================================================================
+// 14. PAMPER HUB: ROMANTIC LOVE QUIZ ENGINE
+// ==========================================================================
+const quizQuestions = [
+  {
+    q: "Axat ne sabse pehle message kahan dekh kar kiya tha?",
+    options: [
+      "Random search karke",
+      "Suggestions me pyari profile dikhi, sharam me girl ID se msg kiya! 🙈",
+      "Kahin aur se"
+    ],
+    correct: 1
+  },
+  {
+    q: "Axat wifiji ko pyar se konsi mithi sweets bulata hai?",
+    options: [
+      "Rasgulla & Jalebi",
+      "Mera Gulabjamun & Meri Kajukatli! 🍯🍬",
+      "Chocolate bar"
+    ],
+    correct: 1
+  },
+  {
+    q: "Agar wifiji kabhi ruth jayein toh Axat ka pehla farz kya hai?",
+    options: [
+      "Sorry bolkar tight hug dena aur turant manana! 🥰",
+      "Wait karna",
+      "Baat na karna"
+    ],
+    correct: 0
+  },
+  {
+    q: "Axat aur Wifiji ka ye pyara rishta kab tak chalega?",
+    options: [
+      "Sirf 3 saal",
+      "Sirf is janam tak",
+      "Aane wale poore 7 janam aur infinity tak! ♾️💍"
+    ],
+    correct: 2
+  }
+];
+
+let currentQuizIdx = 0;
+let quizScore = 0;
+
+function loadQuizQuestion() {
+  const qBox = document.getElementById('quizQuestionBox');
+  const rBox = document.getElementById('quizResultBox');
+  const progEl = document.getElementById('quizProgress');
+  const qTitle = document.getElementById('quizQuestion');
+  const optList = document.getElementById('quizOptions');
+
+  if (!qBox || !qTitle || !optList) return;
+
+  if (currentQuizIdx >= quizQuestions.length) {
+    qBox.style.display = 'none';
+    if (rBox) rBox.style.display = 'block';
+    audio.playFanfare();
+    burstHearts(window.innerWidth / 2, window.innerHeight / 2, 40);
+    return;
+  }
+
+  const currentQ = quizQuestions[currentQuizIdx];
+  if (progEl) progEl.textContent = `Question ${currentQuizIdx + 1} of ${quizQuestions.length}`;
+  qTitle.textContent = currentQ.q;
+  optList.innerHTML = '';
+
+  currentQ.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt-btn';
+    btn.textContent = opt;
+    btn.onclick = () => handleQuizAnswer(idx, btn);
+    optList.appendChild(btn);
+  });
+}
+
+function handleQuizAnswer(selectedIdx, btnEl) {
+  const currentQ = quizQuestions[currentQuizIdx];
+  audio.playPop();
+
+  if (selectedIdx === currentQ.correct) {
+    btnEl.classList.add('correct');
+    quizScore += 25;
+  } else {
+    btnEl.classList.add('correct');
+  }
+
+  burstHearts(window.innerWidth / 2, window.innerHeight / 2, 15);
+
+  setTimeout(() => {
+    currentQuizIdx++;
+    loadQuizQuestion();
+  }, 800);
+}
+
+function shareQuizWhatsApp() {
+  audio.playFanfare();
+  const msg = `🏆 Hii Axat ji! 💖\n\nMaine humara Anniversary Love Quiz solve kiya aur mera score aaya hai 100/100 PERFECT MATCH! 💯🥰\n\nRab ne sach me humari jodi 7 janam ke liye hi banayi hai! Happy 3rd Anniversary! 💍✨`;
+  openWhatsApp(msg);
+}
+
+if (document.getElementById('quizQuestionBox')) {
+  loadQuizQuestion();
+}
+
+</script>
 </body>
 </html>
