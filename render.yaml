@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: for-my-wifyji
-    runtime: node
-    plan: free
-    buildCommand: ""
-    startCommand: node server.js
