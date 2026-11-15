@@ -2168,7 +2168,7 @@ body {
       <span class="nav-icon">🎁</span>
       <span class="nav-label">Gifts</span>
     </a>
-    <a href="pamper-hub.html" class="nav-item highlight-nav">
+    <a href="#pamperHub" class="nav-item highlight-nav">
       <span class="nav-icon">🎡</span>
       <span class="nav-label">Pamper Hub</span>
     </a>
@@ -2773,19 +2773,229 @@ body {
     </section>
 
     <!-- NEW PAGE PROMO BANNER (DIRECT CALLOUT TO PAMPER HUB) -->
-    <section class="pamper-promo-card glass-card">
-      <div class="promo-content">
-        <span class="promo-badge">EXCLUSIVE SPECIAL PAGE 🌟</span>
-        <h3 class="promo-title">Wifiji Special Pamper Hub & Mood Spinner 🎡</h3>
-        <p class="promo-text">
-          Humne ek poora naya page banaya hai sirf aapke mood ke liye! <br>
-          Jisme hai <strong>Interactive Mood Wheel</strong>, <strong>Axat Ke 7 Janam Ke Vows</strong>, aur <strong>Cute Love Quiz</strong>!
-        </p>
-        <a href="pamper-hub.html" class="btn btn-special">
-          <span>Kholengi Wifiji Pamper Hub? Click Here! &rarr; 💖</span>
-        </a>
+    
+    <!-- ==========================================================================
+         PAMPER HUB & MOOD SPINNER SECTION (SEAMLESS INTEGRATION)
+         ========================================================================== -->
+    <div id="pamperHub">
+      <div class="section-heading" style="margin-top: 30px; margin-bottom: 25px;">
+        <span class="section-tag" style="background: linear-gradient(135deg, #ff4b72, #be123c); color: #fff;">EXCLUSIVE VIP ZONE 👑</span>
+        <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 2.8rem);">Wifiji Special Pamper Hub 🎡</h2>
+        <p class="section-desc">Wheel ghumaiye, Axat se pampering mangiye aur 7 vows ko seal kijiye!</p>
+      </div>
+      <section class="section-container" id="moodWheelSection">
+      <div class="section-heading">
+        <span class="section-tag">Spin & Win Pampering 🎡</span>
+        <h2 class="section-title">Wifiji Ka Mood Spinner! 💃</h2>
+        <p class="section-desc">Wheel ghuma kar dekhiye aaj Axat se konsi special pampering ya treat milne wali hai:</p>
+      </div>
+
+      <div class="wheel-box glass-card">
+        <div class="wheel-wrapper">
+          <div class="wheel-pointer">🔻</div>
+          <div class="wheel-circle" id="wheelCircle">
+            <canvas id="wheelCanvas" width="340" height="340"></canvas>
+          </div>
+          <button class="wheel-spin-center-btn" id="spinBtn" onclick="spinWheel()">
+            <span>SPIN! 💖</span>
+          </button>
+        </div>
+
+        <!-- Wheel Result Popup Area -->
+        <div class="wheel-result-card" id="wheelResultCard" style="display:none;">
+          <div class="result-badge">WIFIJI HAS WON! 🎉</div>
+          <h3 class="result-title" id="wheelResultTitle">Special Treat!</h3>
+          <p class="result-desc" id="wheelResultDesc">Axat will execute this immediately!</p>
+          <div class="result-actions">
+            <button class="btn btn-whatsapp" id="wheelWhatsAppBtn" onclick="sendWheelResultWhatsApp()">
+              <span>📲 Send Command to Axat on WhatsApp! 💖</span>
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="spinAgain()">
+              <span>Spin Again 🔄</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- SECTION 2: AXAT'S 7 SACRED VOWS FOR 7 JANAM -->
+    <section class="section-container" id="promisesSection">
+      <div class="section-heading">
+        <span class="section-tag">Sacred Promises 💍</span>
+        <h2 class="section-title">Axat Ke 7 Janam Ke 7 Vows 📜</h2>
+        <p class="section-desc">Kal 3 saal pure ho rahe hain, par ye 7 promises aane wale 7 janmo tak ke liye hain:</p>
+      </div>
+
+      <div class="vows-counter-badge">
+        <span id="sealedVowsCount">0</span> of 7 Vows Sealed with Love ❤️
+      </div>
+
+      <div class="vows-grid">
+
+        <!-- Vow 1 -->
+        <div class="vow-card glass-card" id="vow-1" onclick="sealVow(1)">
+          <div class="vow-num">VOW 1 🌸</div>
+          <h4 class="vow-heading">Hamesha Aapki Smile Ki Hifazat Karunga</h4>
+          <p class="vow-text">
+            Duniya me chahe kitna bhi stress ho, aapki is innocent pyari smile ko kabhi kam nahi hone dunga. Aapko hasana mera sabse pehla farz rahega!
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-1">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+        <!-- Vow 2 -->
+        <div class="vow-card glass-card" id="vow-2" onclick="sealVow(2)">
+          <div class="vow-num">VOW 2 🙈</div>
+          <h4 class="vow-heading">Pehle Manane Main Hi Aaunga</h4>
+          <p class="vow-text">
+            Jab bhi choti-moti ladai hogi ya aap ruth jayengi, galti chahe kisi ki bhi ho, aapka Axat sabse pehle sorry bolkar aapko gale lagane aayega!
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-2">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+        <!-- Vow 3 -->
+        <div class="vow-card glass-card" id="vow-3" onclick="sealVow(3)">
+          <div class="vow-num">VOW 3 👑</div>
+          <h4 class="vow-heading">Lifetime Princess Treatment</h4>
+          <p class="vow-text">
+            Chahe humare rishte ko 3 saal ho ya 30 saal, aap mere dil ki Sehzadi hain aur hamesha aapko royal princess treatment hi milega!
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-3">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+        <!-- Vow 4 -->
+        <div class="vow-card glass-card" id="vow-4" onclick="sealVow(4)">
+          <div class="vow-num">VOW 4 🤝</div>
+          <h4 class="vow-heading">Hamesha Aapka Best Friend Rahunga</h4>
+          <p class="vow-text">
+            Humari shuruat dosti se hui thi aur main hamesha wahi sachha dost rahunga jisse aap bina dare, bina jhijhak dil ki har ek baat share kar sakti hain.
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-4">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+        <!-- Vow 5 -->
+        <div class="vow-card glass-card" id="vow-5" onclick="sealVow(5)">
+          <div class="vow-num">VOW 5 🍦</div>
+          <h4 class="vow-heading">Midnight Craving & Mood Doctor</h4>
+          <p class="vow-text">
+            Aadhi raat ko ice-cream khani ho ya drive par jana ho, ya favourite chocolates chahiye ho... Axat hamesha ready rahega!
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-5">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+        <!-- Vow 6 -->
+        <div class="vow-card glass-card" id="vow-6" onclick="sealVow(6)">
+          <div class="vow-num">VOW 6 🍯</div>
+          <h4 class="vow-heading">Mera Gulabjamun & Kajukatli Sambhalna</h4>
+          <p class="vow-text">
+            Aap meri sabse pyari mithai hain. Aapki har choti zid, nakhre aur pyari baaton ko hamesha khushi-khushi jhelunga aur pamper karunga!
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-6">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+        <!-- Vow 7 -->
+        <div class="vow-card glass-card" id="vow-7" onclick="sealVow(7)">
+          <div class="vow-num">VOW 7 ♾️</div>
+          <h4 class="vow-heading">7 Janam Tak Sirf Aapka Axat</h4>
+          <p class="vow-text">
+            Ye safar sirf is janam ka nahi hai. Rab se aane wale 7 janam tak sirf aur sirf aapka sath maang liya hai. Hamesha sirf aapka!
+          </p>
+          <div class="vow-seal-btn">
+            <span class="seal-icon">❤️</span>
+            <span class="seal-label" id="vow-status-7">Tap to Seal Vow</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Share All Vows Button -->
+      <div style="text-align:center; margin-top:30px;">
+        <button class="btn btn-whatsapp btn-large" onclick="shareVowsOnWhatsApp()">
+          <span>📲 Send All 7 Vows Accepted to Axat on WhatsApp! 💖</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CUTE ROMANTIC LOVE QUIZ -->
+    <section class="section-container" id="quizSection">
+      <div class="section-heading">
+        <span class="section-tag">Playful Quiz 💖</span>
+        <h2 class="section-title">The "Axat &hearts; Wifiji" Love Quiz! 🧸</h2>
+        <p class="section-desc">Dekhte hain humara love score kitna perfect aata hai (Spoiler: 100/100! 🙈)</p>
+      </div>
+
+      <div class="quiz-card glass-card" id="quizCard">
+        <div id="quizQuestionBox">
+          <div class="quiz-progress" id="quizProgress">Question 1 of 4</div>
+          <h3 class="quiz-q-title" id="quizQuestion">Question will appear here</h3>
+          <div class="quiz-options-list" id="quizOptions"></div>
+        </div>
+
+        <!-- Quiz Completed Result -->
+        <div id="quizResultBox" style="display:none; text-align:center;">
+          <div class="trophy-icon">🏆💯</div>
+          <h3 class="cert-title" style="color:#831843;">100% PERFECT MATCH!</h3>
+          <p class="cert-desc" style="font-size:1.15rem;">
+            Duniya ke sabse cute couple! Rab ne sach me humari jodi 7 janam ke liye hi banayi hai! 💖
+          </p>
+          <button class="btn btn-whatsapp" onclick="shareQuizWhatsApp()">
+            <span>📲 Send Quiz Victory Score to Axat on WhatsApp! 🥳</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: EXPRESS 1-TAP WHATSAPP LOVE MESSAGES -->
+    <section class="section-container">
+      <div class="section-heading">
+        <span class="section-tag">Instant Love Notes 💬</span>
+        <h2 class="section-title">1-Tap WhatsApp Love Messages To Axat 💌</h2>
+        <p class="section-desc">Kisi bhi button par tap karke seedha Axat ko WhatsApp par bhej dijiye:</p>
+      </div>
+
+      <div class="express-wp-grid">
+        <button class="express-wp-card" onclick="sendExpressWhatsApp('Hii Axat ji! 💖 Happy 3rd Anniversary! Website dekh kar mere face par bohot badi smile aa gayi! I Love You so much! 🥰✨')">
+          <span class="exp-icon">🥰</span>
+          <span class="exp-text">"Website dekh kar bohot badi smile aa gayi! Love you Axat!"</span>
+        </button>
+
+        <button class="express-wp-card" onclick="sendExpressWhatsApp('Mere Pyare Axat! 🍯 Aapka Gulabjamun bohot khush ho gaya! Aap duniya ke sabse best husband hain! 💖🌸')">
+          <span class="exp-icon">🍯</span>
+          <span class="exp-text">"Aapka Gulabjamun bohot khush ho gaya! Best husband ever!"</span>
+        </button>
+
+        <button class="express-wp-card" onclick="sendExpressWhatsApp('Axat ji! 🚗🍦 Chaliye jaldi ready ho jaiye, humari anniversary celebrate karne chalte hain!')">
+          <span class="exp-icon">🚗</span>
+          <span class="exp-text">"Chaliye jaldi ready ho jaiye, celebration ke liye bahar chalte hain!"</span>
+        </button>
+
+        <button class="express-wp-card" onclick="sendExpressWhatsApp('Axat! 💍 3 saal kaise beet gaye pata hi nahi chala... agle 7 janam tak sirf aapka sath chahiye! Happy Anniversary! ♾️❤️')">
+          <span class="exp-icon">♾️</span>
+          <span class="exp-text">"3 saal pure ho gaye! Agle 7 janam tak sirf aapka sath chahiye!"</span>
+        </button>
+      </div>
+    </section>
+
+    
+    </div>
+
 
     <!-- INTERACTIVE LOVE ENVELOPE (LETTER FROM AXAT) -->
     <section class="section-container" id="loveLetterSection">
@@ -2915,7 +3125,7 @@ body {
         Happy 3rd Anniversary &bull; 16 November &bull; Together Forever! ♾️❤️
       </p>
       <div style="margin-top: 15px;">
-        <a href="pamper-hub.html" class="btn btn-outline btn-sm">
+        <a href="#pamperHub" class="btn btn-outline btn-sm">
           <span>Go to Wifiji's Pamper Hub &rarr;</span>
         </a>
       </div>
