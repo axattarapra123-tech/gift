@@ -655,13 +655,13 @@ function celebrateProposal() {
         IT'S AN ETERNAL PROMISE! ♾️
       </h3>
       <p style="font-size: 1.25rem; color: #be123c; font-weight: 700; margin-bottom: 12px;">
-        Wifiji is officially booked for 7 Janam by Axat!
+        7 Janmo se bhi aage... Infinity tak hum hamesha ek doosre ke hain! ♾️❤️
       </p>
       <p style="font-size: 1.05rem; color: #551c33; max-width: 550px; margin: 0 auto 20px;">
         Profile suggestion me dekh kar message kiya tha, par aaj aap meri sabse sachhi dua aur sabse pyari biwi hain. Happy 3rd Anniversary meri Cutiepie! 🌸🍯
       </p>
-      <button class="btn btn-whatsapp" onclick="openWhatsApp('Hii Axat ji! 💖 Maine aapka proposal accept kar liya! Agle 7 Janam tak sirf aapki wifiji ban kar rahungi! 💍✨')">
-        <span>📲 Send 'YES FOR 7 LIFETIMES' on WhatsApp! 💖</span>
+      <button class="btn btn-whatsapp" onclick="openWhatsApp('Hii Axat ji! 💖 Maine aapka proposal accept kar liya! 7 janmo se bhi aage, infinity tak hum hamesha ek doosre ke hain! 💍✨')">
+        <span>📲 Send 'YES! INFINITY TAK HUM EK DOOSRE KE HAIN' on WhatsApp! 💖</span>
       </button>
     </div>
   `;
