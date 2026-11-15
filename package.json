@@ -1,0 +1,9 @@
+{
+  "name": "gift",
+  "version": "1.0.0",
+  "description": "3rd Anniversary Surprise Website for Wifiji",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
