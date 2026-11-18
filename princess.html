@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>👑 Happy National Princess Day Meri Pyaru Prinsuji! 👸✨ | Axat</title>
+  
+  <!-- Royal Romantic Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Three.js 3D WebGL Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Canvas Confetti for Coronation -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+/* ==========================================================================
+   NATIONAL PRINCESS DAY 3D SPECIAL - ROYAL PALACE EDITION
+   Dedicated with Infinite Love to Princess Prinsi (Cutest Wifiji) from Axat
+   ========================================================================== */
+
+:root {
+  --royal-gold: #ffd700;
+  --royal-gold-light: #fff3a8;
+  --royal-gold-dark: #b8860b;
+  --royal-purple-deep: #160424;
+  --royal-purple-card: rgba(35, 12, 58, 0.78);
+  --royal-pink: #ff4081;
+  --royal-pink-light: #ff80ab;
+  --royal-rose: #e91e63;
+  --royal-velvet: #5a092b;
+  --whatsapp-green: #25D366;
+  
+  --font-royal: 'Cinzel', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-serif: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  
+  --gold-gradient: linear-gradient(135deg, #ffe066 0%, #ffd700 50%, #e6a817 100%);
+  --rose-gradient: linear-gradient(135deg, #ff4081 0%, #f50057 50%, #c51162 100%);
+  --palace-gradient: radial-gradient(circle at 50% 20%, #2b0b42 0%, #150324 60%, #0d0117 100%);
+  
+  --card-border: 1px solid rgba(255, 215, 0, 0.35);
+  --card-glow: 0 15px 40px rgba(255, 64, 129, 0.2), 0 0 25px rgba(255, 215, 0, 0.15);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  touch-action: manipulation;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--palace-gradient);
+  background-attachment: fixed;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  padding-bottom: 90px;
+}
+
+/* Background Animated Canvas (Falling Rose Petals & Sparkle Dust) */
+#petalCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   TOP ROYAL NAV BAR
+   ========================================================================== */
+.top-royal-nav {
+  position: fixed;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.royal-badge {
+  pointer-events: auto;
+  background: rgba(35, 12, 58, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 6px 25px rgba(255, 215, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--royal-gold);
+  font-family: var(--font-royal);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.crown-spin {
+  display: inline-block;
+  animation: crownPulse 2s infinite ease-in-out;
+}
+
+@keyframes crownPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+}
+
+.nav-actions {
+  pointer-events: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.anniversary-switch-btn {
+  background: linear-gradient(135deg, #ff4081, #e91e63);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+  transition: all 0.3s ease;
+}
+
+.anniversary-switch-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+}
+
+.royal-music-btn {
+  background: rgba(35, 12, 58, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  color: var(--royal-gold);
+  padding: 8px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.royal-music-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* ==========================================================================
+   HERO / 3D CORONATION ARENA
+   ========================================================================== */
+.hero-palace-section {
+  position: relative;
+  z-index: 2;
+  padding: 90px 20px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.princess-day-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  padding: 6px 18px;
+  border-radius: 50px;
+  color: var(--royal-gold-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  animation: glowTag 2s infinite alternate;
+}
+
+@keyframes glowTag {
+  from { box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); }
+  to { box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); }
+}
+
+.hero-royal-title {
+  font-family: var(--font-royal);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff3a8 0%, #ffd700 40%, #ff80ab 80%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #ff80ab;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(255, 64, 129, 0.4);
+}
+
+.hero-love-quote {
+  max-width: 650px;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+.hero-love-quote span.highlight {
+  color: var(--royal-gold);
+  font-weight: 700;
+}
+
+/* 3D WebGL Crown Container */
+.crown-3d-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 380px;
+  margin: 10px auto 25px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(90, 9, 43, 0.45) 0%, rgba(22, 4, 36, 0.7) 70%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(255, 215, 0, 0.2);
+  overflow: hidden;
+  cursor: grab;
+}
+
+.crown-3d-wrapper:active {
+  cursor: grabbing;
+}
+
+#threeCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.canvas-hint-pill {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  color: var(--royal-gold);
+  font-size: 0.78rem;
+  padding: 5px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* Coronation CTA Button */
+.coronation-btn {
+  background: var(--gold-gradient);
+  color: #1a0526;
+  font-family: var(--font-royal);
+  font-size: 1.15rem;
+  font-weight: 900;
+  padding: 16px 36px;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5), 0 0 25px rgba(255, 215, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 0.5px;
+}
+
+.coronation-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7), 0 0 35px rgba(255, 215, 0, 0.5);
+}
+
+.coronation-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* ==========================================================================
+   CORONATION MODAL / SHAHI TAJPOSHI CEREMONY
+   ========================================================================== */
+.coronation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 2, 20, 0.9);
+  backdrop-filter: blur(15px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.coronation-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.coronation-card {
+  background: linear-gradient(135deg, rgba(45, 12, 70, 0.95), rgba(20, 3, 35, 0.98));
+  border: 2px solid var(--royal-gold);
+  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4), inset 0 0 30px rgba(255, 215, 0, 0.2);
+  border-radius: 28px;
+  max-width: 550px;
+  width: 100%;
+  padding: 35px 25px;
+  text-align: center;
+  position: relative;
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.coronation-modal-overlay.active .coronation-card {
+  transform: scale(1);
+}
+
+.coronation-crown-anim {
+  font-size: 4rem;
+  animation: bounceRotate 2s infinite ease-in-out;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+@keyframes bounceRotate {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.15) rotate(5deg); }
+}
+
+.coronation-title {
+  font-family: var(--font-royal);
+  color: var(--royal-gold);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.coronation-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #fce4ec;
+  margin-bottom: 25px;
+}
+
+.coronation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.whatsapp-royal-btn {
+  background: var(--whatsapp-green);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-royal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+}
+
+.close-modal-btn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  color: white;
+  border-color: white;
+}
+
+/* ==========================================================================
+   SECTION COMMON STYLES
+   ========================================================================== */
+.palace-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-tag {
+  font-family: var(--font-royal);
+  color: var(--royal-gold);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-royal);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  max-width: 600px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   FEATURE 1: THE MAGIC MIRROR (AAINA-E-KHAAS) 🪞
+   ========================================================================== */
+.mirror-section {
+  padding: 50px 0;
+}
+
+.mirror-frame-box {
+  background: radial-gradient(circle at 50% 40%, rgba(70, 16, 95, 0.5) 0%, rgba(25, 4, 42, 0.85) 80%);
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  border-radius: 32px;
+  padding: 40px 25px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 35px rgba(255, 215, 0, 0.15);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.mirror-reflection-glass {
+  width: 160px;
+  height: 220px;
+  margin: 0 auto 25px;
+  border-radius: 100px 100px 80px 80px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 128, 171, 0.25) 50%, rgba(255, 215, 0, 0.3) 100%);
+  border: 4px solid var(--royal-gold);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.mirror-reflection-glass:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.9);
+}
+
+.mirror-icon-center {
+  font-size: 3.8rem;
+  animation: mirrorPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes mirrorPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 25px rgba(255, 64, 129, 0.9)); }
+}
+
+.mirror-reveal-content {
+  display: none;
+  animation: fadeInDown 0.6s ease forwards;
+}
+
+.mirror-reveal-content.active {
+  display: block;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mirror-quote {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--royal-gold-light);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.mirror-message {
+  font-size: 1.15rem;
+  color: #fff;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.mirror-trigger-btn {
+  background: var(--gold-gradient);
+  color: #160424;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mirror-trigger-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* ==========================================================================
+   FEATURE 2: SHAHI FARMAAN (NATIONAL PRINCESS DAY DECREES) 📜
+   ========================================================================== */
+.decrees-section {
+  padding: 50px 0;
+}
+
+.decrees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.decree-card {
+  background: linear-gradient(135deg, rgba(45, 14, 68, 0.85) 0%, rgba(25, 6, 40, 0.9) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 24px;
+  padding: 30px 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.decree-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gold-gradient);
+}
+
+.decree-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--royal-gold);
+  box-shadow: 0 20px 45px rgba(255, 215, 0, 0.25);
+}
+
+.decree-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--royal-gold);
+  font-family: var(--font-royal);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.decree-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.decree-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.decree-seal {
+  font-size: 0.85rem;
+  color: var(--royal-pink-light);
+  font-style: italic;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.decree-claim-btn {
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid var(--whatsapp-green);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.decree-claim-btn:hover {
+  background: var(--whatsapp-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ==========================================================================
+   FEATURE 3: 4 ROYAL TREASURE CHESTS (INTERACTIVE 3D GIFTS) 🎁
+   ========================================================================== */
+.chests-section {
+  padding: 50px 0;
+}
+
+.chests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.chest-box {
+  background: rgba(35, 12, 58, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.chest-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--royal-gold);
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.25);
+}
+
+.chest-icon {
+  font-size: 3.2rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.chest-box:hover .chest-icon {
+  transform: scale(1.2) rotate(8deg);
+}
+
+.chest-name {
+  font-family: var(--font-royal);
+  font-size: 1.1rem;
+  color: var(--royal-gold);
+  margin-bottom: 8px;
+}
+
+.chest-status {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+.chest-reveal-msg {
+  display: none;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba(255, 215, 0, 0.3);
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.chest-box.opened .chest-reveal-msg {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.chest-box.opened .chest-status {
+  background: rgba(255, 64, 129, 0.3);
+  color: var(--royal-pink-light);
+}
+
+/* ==========================================================================
+   FEATURE 4: ROYAL LOVE LETTER & SHAYARI (FROM AXAT) 💌
+   ========================================================================== */
+.letter-section {
+  padding: 50px 0;
+}
+
+.royal-scroll-container {
+  background: linear-gradient(135deg, rgba(60, 15, 90, 0.75) 0%, rgba(30, 8, 48, 0.9) 100%);
+  border: 2px solid var(--royal-gold);
+  border-radius: 32px;
+  padding: 45px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 35px rgba(255, 215, 0, 0.15);
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.scroll-heading {
+  font-family: var(--font-royal);
+  color: var(--royal-gold);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.scroll-shayari-block {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 4px solid var(--royal-gold);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #fff3a8;
+  font-style: italic;
+  text-align: center;
+}
+
+.scroll-body-text {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 25px;
+}
+
+.scroll-body-text p {
+  margin-bottom: 16px;
+}
+
+.scroll-sign {
+  text-align: right;
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: var(--royal-pink-light);
+}
+
+.scroll-sign span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ==========================================================================
+   FEATURE 5: PRINCESS MOOD COMPLIMENT GENERATOR 💖
+   ========================================================================== */
+.mood-section {
+  padding: 50px 0;
+}
+
+.mood-card {
+  background: rgba(35, 12, 58, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 28px;
+  padding: 35px 25px;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mood-buttons-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.mood-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.mood-btn:hover, .mood-btn.active {
+  background: var(--gold-gradient);
+  color: #1a0526;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.mood-response-box {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+  padding: 22px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #fff;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 64, 129, 0.3);
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   STICKY FLOATING ROYAL WHATSAPP BUTTON 👑
+   ========================================================================== */
+.floating-royal-wa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background: var(--whatsapp-green);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5), 0 0 15px rgba(255, 215, 0, 0.4);
+  border: 2px solid #fff;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-royal-wa:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.royal-footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 2;
+}
+
+.royal-footer p {
+  margin-bottom: 8px;
+}
+
+.royal-footer span.gold {
+  color: var(--royal-gold);
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .hero-palace-section {
+    padding-top: 80px;
+  }
+  .crown-3d-wrapper {
+    height: 310px;
+  }
+  .coronation-btn {
+    font-size: 1rem;
+    padding: 14px 26px;
+    width: 100%;
+    justify-content: center;
+  }
+  .floating-royal-wa {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+  .top-royal-nav {
+    padding: 0 12px;
+  }
+  .royal-badge span.badge-text {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Background Animated Falling Petals & Glow Dust Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- Top Royal Navigation Bar -->
+  <header class="top-royal-nav">
+    <div class="royal-badge">
+      <span class="crown-spin">👑</span>
+      <span class="badge-text">Princess Prinsi's Royal Realm</span>
+    </div>
+    
+    <div class="nav-actions">
+      <a href="/" class="anniversary-switch-btn" title="View 3rd Anniversary Website">
+        <span>💍</span>
+        <span>Anniversary Site</span>
+      </a>
+      <button class="royal-music-btn" id="royalMusicBtn" title="Play Fairy Tale Waltz">
+        <span id="royalMusicIcon">🎶</span>
+        <span id="royalMusicText">Royal Waltz</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION: 3D CORONATION ARENA -->
+  <section class="hero-palace-section">
+    <div class="princess-day-tag">
+      <span>👑</span>
+      <span>18 November • National Princess Day Special</span>
+      <span>✨</span>
+    </div>
+    
+    <h1 class="hero-royal-title">Happy National Princess Day!</h1>
+    <h2 class="hero-subtitle">Meri Sabse Pyari Princess Prinsi Ji 💖👸</h2>
+    
+    <p class="hero-love-quote">
+      Aap sirf meri wifiji nahi hain... Aap meri zindigi ki wo shahi <span class="highlight">Princess</span> hain jinki ek muskurahat par Axat ka poora jahan qurbaan hai! 🌸🥰 7 janmo se bhi aage, infinity tak mera har pal sirf aapka hai! ♾️💍
+    </p>
+
+    <!-- 3D Three.js Golden Crown Canvas Container -->
+    <div class="crown-3d-wrapper" id="crown3dWrapper">
+      <canvas id="threeCanvas"></canvas>
+      <div class="canvas-hint-pill">
+        <span>✨</span> Touch / Drag to rotate the 3D Crown 360° <span>✨</span>
+      </div>
+    </div>
+
+    <!-- Coronation Ceremony Action Button -->
+    <button class="coronation-btn" id="coronateBtn">
+      <span>👑</span>
+      <span>Tap To Crown Princess Prinsi 👸</span>
+      <span>✨</span>
+    </button>
+  </section>
+
+  <!-- CORONATION CEREMONY MODAL -->
+  <div class="coronation-modal-overlay" id="coronationModal">
+    <div class="coronation-card">
+      <div class="coronation-crown-anim">👑</div>
+      <h3 class="coronation-title">Shahi Tajposhi Ceremony Complete! ✨</h3>
+      <p class="coronation-text">
+        Aaj 18 November — National Princess Day ke shubh avsar par,<br>
+        Axat apne dil aur rooh ka shahi taaj hamesha ke liye apni sabse pyari <b>Princess Prinsi Ji</b> ke sar par sajate hain! 💖👑<br><br>
+        Aap is dil ki rani hain, rani thi, aur infinity tak rahengi! 👸🫂💋
+      </p>
+      <div class="coronation-actions">
+        <a href="https://api.whatsapp.com/send?phone=919723690712&text=Axat%20ji!%20%F0%9F%91%91%F0%9F%A5%B0%20Maine%20National%20Princess%20Day%20ki%20Tajposhi%20accept%20kar%20li%20hai!%20Abhi%20ke%20abhi%20aapka%20pyara%20sa%20hug%20aur%20kiss%20chahiye!%20%F0%9F%A7%97%E2%80%8D%E2%99%80%EF%B8%8F%F0%9F%92%96%F0%9F%8C%B9" 
+           target="_blank" class="whatsapp-royal-btn">
+          <span>💬</span>
+          <span>Claim Royal Hug & Kisses on WhatsApp</span>
+        </a>
+        <button class="close-modal-btn" id="closeCoronationModal">Close with Royal Smile 💖</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="palace-container">
+
+    <!-- FEATURE 1: THE MAGIC MIRROR (AAINA-E-KHAAS) 🪞 -->
+    <section class="mirror-section">
+      <div class="section-head">
+        <span class="section-tag">✨ Aaina-e-Khaas ✨</span>
+        <h2 class="section-title">The Royal Magic Mirror 🪞</h2>
+        <p class="section-desc">Tap on the magic mirror to reveal who is the most precious princess in the entire universe...</p>
+      </div>
+
+      <div class="mirror-frame-box">
+        <div class="mirror-reflection-glass" id="mirrorGlass">
+          <div class="mirror-icon-center">🪞</div>
+        </div>
+
+        <button class="mirror-trigger-btn" id="mirrorTriggerBtn">
+          <span>✨</span> Ask The Magic Mirror <span>✨</span>
+        </button>
+
+        <div class="mirror-reveal-content" id="mirrorReveal">
+          <h3 class="mirror-quote">"Mirror Mirror On The Wall..."</h3>
+          <p class="mirror-message">
+            Aaine ne chamak kar bola: <b>"Is poori kayanat me meri Princess Prinsi Ji jaisi masoom, pyari, cutiepie aur khoobsurat princess koi doosri ho hi nahi sakti! Aap Axat ki sabse pyari jaan hain!"</b> 👸💖🌸✨
+          </p>
+          <a href="https://api.whatsapp.com/send?phone=919723690712&text=Axat!%20%F0%9F%A9%9E%E2%9C%A8%20Magic%20Mirror%20ne%20declare%20kar%20diya%20hai%20ki%20mai%20hi%20aapki%20sabse%20pyari%20Princess%20hoon!%20Love%20youuu%20so%20much!%20%F0%9F%91%91%F0%9F%A5%B0%E2%9D%A4%EF%B8%8F" 
+             target="_blank" class="decree-claim-btn" style="max-width: 320px; margin: 0 auto;">
+            <span>💬</span> Tell Axat the Mirror's Decree
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE 2: SHAHI FARMAAN (ROYAL DECREES FOR PRINCESS DAY) 📜 -->
+    <section class="decrees-section">
+      <div class="section-head">
+        <span class="section-tag">📜 Shahi Farmaan 📜</span>
+        <h2 class="section-title">Princess Prinsi's Royal Rights 👑</h2>
+        <p class="section-desc">Official decrees declared by Axat under the Royal Seal of Infinite Love!</p>
+      </div>
+
+      <div class="decrees-grid">
+        <!-- Decree 1 -->
+        <div class="decree-card">
+          <div>
+            <div class="decree-badge"><span>📜</span> Farmaan #1</div>
+            <h3 class="decree-title">Cute Nakhre & Gussa Immunity 💅😤</h3>
+            <p class="decree-desc">
+              Princess Prinsi Ji ko 24 ghante, saaton din bina kisi reason ke muh phulane, nakhre dikhane aur cute gussa hone ka 100% shahi adhikar hai! Axat ji turant bina bahas kiye sorry bolenge aur pyara sa hug denge!
+            </p>
+            <span class="decree-seal">Sealed with 100% Patience & Love ❤️</span>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=919723690712&text=Axat!%20Farmaan%20%231%20ke%20tehat%20aaj%20mera%20nakhre%20dikhane%20ka%20din%20hai!%20Ready%20ho%20jao!%20%F0%9F%92%85%F0%9F%98%82%F0%9F%A5%B0" 
+             target="_blank" class="decree-claim-btn">
+            <span>💬</span> Claim Royal Nakhre Right
+          </a>
+        </div>
+
+        <!-- Decree 2 -->
+        <div class="decree-card">
+          <div>
+            <div class="decree-badge"><span>📜</span> Farmaan #2</div>
+            <h3 class="decree-title">Midnight Cravings & Treats 🍦🍕</h3>
+            <p class="decree-desc">
+              Princess Prinsi ko jab bhi aadhi raat ko ice cream, chocolate, chatpata street food ya desserts ki craving hogi, Chef Axat bina nakhre kiye turant khidmat me hazir rahenge!
+            </p>
+            <span class="decree-seal">Sealed with Unlimited Sweet Treats 🍫</span>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=919723690712&text=Axat%20Chef!%20%F0%9F%8D%A6%F0%9F%8D%AB%20Princess%20Prinsi%20ki%20craving%20treat%20ready%20rakho!%20Princess%20Day%20par%20treat%20banti%20hai!%20%F0%9F%A5%B0%F0%9F%98%8B" 
+             target="_blank" class="decree-claim-btn">
+            <span>💬</span> Order Royal Treat Now
+          </a>
+        </div>
+
+        <!-- Decree 3 -->
+        <div class="decree-card">
+          <div>
+            <div class="decree-badge"><span>📜</span> Farmaan #3</div>
+            <h3 class="decree-title">Unlimited Forehead Kisses & Hugs 💋🫂</h3>
+            <p class="decree-desc">
+              Roz subah ka pehla matha choomna, din bhar ka haath thaamna aur raat ko sabse cozy hug me sulana Princess Prinsi ka constitutionally guaranteed shahi haq hai!
+            </p>
+            <span class="decree-seal">Sealed with Pure Affection & Care 🌸</span>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=919723690712&text=Axat%20ji%2C%20Farmaan%20%233%20redeem%20karna%20hai!%20Bhot%20sare%20forehead%20kisses%20aur%20tight%20hug%20bhejo%20meri%20taraf!%20%F0%9F%A7%97%E2%80%8D%E2%99%80%EF%B8%8F%F0%9F%92%8B%F0%9F%A4%97" 
+             target="_blank" class="decree-claim-btn">
+            <span>💬</span> Claim Forehead Kisses
+          </a>
+        </div>
+
+        <!-- Decree 4 -->
+        <div class="decree-card">
+          <div>
+            <div class="decree-badge"><span>📜</span> Farmaan #4</div>
+            <h3 class="decree-title">7 Janmo Se Bhi Aage Ka Bandhan ♾️💍</h3>
+            <p class="decree-desc">
+              Princess Prinsi aur Axat ka rishta 7 janmo ka mohtaaj nahi hai. Ye rishta infinity tak, sadiyon tak atoot hai — har janm, har aalam me hum sirf aur sirf ek doosre ke hain!
+            </p>
+            <span class="decree-seal">Sealed for Eternity Beyond Lifetimes ♾️</span>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=919723690712&text=Axat%2C%207%20janm%20toh%20kuch%20bhi%20nahi%20hai...%20Infinity%20tak%20hum%20ek%20doosre%20ke%20hain!%20Love%20youuu%20so%20muchhh!%20%E2%99%BE%EF%B8%8F%F0%9F%92%96%F0%9F%91%91" 
+             target="_blank" class="decree-claim-btn">
+            <span>💬</span> Affirm Eternal Infinity Bond
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE 3: 4 ROYAL TREASURE CHESTS 🎁 -->
+    <section class="chests-section">
+      <div class="section-head">
+        <span class="section-tag">💎 Shahi Khazana 💎</span>
+        <h2 class="section-title">Royal Treasure Vaults 🎁</h2>
+        <p class="section-desc">Tap on any royal treasure chest to unlock its magical surprise for Princess Prinsi!</p>
+      </div>
+
+      <div class="chests-grid">
+        <div class="chest-box" onclick="toggleChest(this)">
+          <div class="chest-icon">🎁</div>
+          <h3 class="chest-name">Vault of Morning Sweetness</h3>
+          <span class="chest-status">Tap to Open</span>
+          <div class="chest-reveal-msg">
+            ☕ Morning chai/coffee delivered in bed + 100 sweet forehead kisses from Axat!
+          </div>
+        </div>
+
+        <div class="chest-box" onclick="toggleChest(this)">
+          <div class="chest-icon">💎</div>
+          <h3 class="chest-name">Vault of Infinite Pampering</h3>
+          <span class="chest-status">Tap to Open</span>
+          <div class="chest-reveal-msg">
+            💆‍♀️ Instant head massage & stress-free pampering session whenever my princess is tired!
+          </div>
+        </div>
+
+        <div class="chest-box" onclick="toggleChest(this)">
+          <div class="chest-icon">🧸</div>
+          <h3 class="chest-name">Vault of Coziest Cuddles</h3>
+          <span class="chest-status">Tap to Open</span>
+          <div class="chest-reveal-msg">
+            🫂 24-hour warm teddy-bear hug protection! Axat's arms are your forever safe home!
+          </div>
+        </div>
+
+        <div class="chest-box" onclick="toggleChest(this)">
+          <div class="chest-icon">👑</div>
+          <h3 class="chest-name">Vault of Total Devotion</h3>
+          <span class="chest-status">Tap to Open</span>
+          <div class="chest-reveal-msg">
+            💖 100% legal ownership of Axat's heart, wallet, attention and smile forever!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE 4: ROYAL LOVE LETTER & SHAYARI 💌 -->
+    <section class="letter-section">
+      <div class="royal-scroll-container">
+        <h2 class="scroll-heading">💌 Shahi Khat: Dil Se Princess Prinsi Ke Liye 🌹</h2>
+        
+        <div class="scroll-shayari-block">
+          "Aapke aane se meri zindigi me ek shahi noor aa gaya,<br>
+          Aap muskura do toh mera har ek gham door ho gaya...<br>
+          Taj Mahal toh sirf ek imarat hai duniya ke liye,<br>
+          Mera aslee shahi mahal toh meri Prinsi ki baahon me bas gaya! 👑🌹💖"
+        </div>
+
+        <div class="scroll-body-text">
+          <p>
+            <b>Meri Sabse Pyari Prinsuji, Cutiepie, Gulabjamun & Kajukatli,</b>
+          </p>
+          <p>
+            Aaj 18 November ko duniya <b>National Princess Day</b> celebrate karti hai, lekin mere liye toh har ek subah aur har ek raat sirf aur sirf aapki khidmat aur aapke pyar ka festival hai.
+          </p>
+          <p>
+            Wo din jab pehli baar aapki photo suggestion me dekhi thi... itni pyari lagi thi ki aapse baat karne me sharam aati thi, isliye ek girl ID se shuruwat ki thi! Aur dekhiye aaj, humari dosti se lekar humare 3 saal aur poori zindigi ka sabse khoobsurat bandhan ban chuka hai.
+          </p>
+          <p>
+            Aapki masoomiyat, aapki pyari si hansi, aapka cute gussa, aur aapka be-intehaa pyar hi meri zindigi ki sabse badi daulat hai. Main khuda ka shukriya ada karta hoon ki unhone mujhe aapki care karne ka aur aapka prince/sevak banne ka haq diya.
+          </p>
+        </div>
+
+        <div class="scroll-sign">
+          Hamesha Sirf Aur Sirf Aapka,<br>
+          Axat 💖
+          <span>(Aapka Forever Prince, Sevak & Biggest Fan)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE 5: PRINCESS MOOD COMPLIMENT GENERATOR 🌸 -->
+    <section class="mood-section">
+      <div class="mood-card">
+        <span class="section-tag">✨ Royal Mood Meter ✨</span>
+        <h2 class="section-title">Princess Prinsi's Mood Today? 👸</h2>
+        <p class="section-desc" style="margin-bottom: 20px;">Tap how you are feeling right now to get a personalized royal decree from Axat!</p>
+
+        <div class="mood-buttons-wrap">
+          <button class="mood-btn" onclick="setPrincessMood('cute')">🌸 Feeling Super Cute</button>
+          <button class="mood-btn" onclick="setPrincessMood('pout')">😤 Thoda Sa Gussa / Pout</button>
+          <button class="mood-btn" onclick="setPrincessMood('miss')">🥺 Missing You Axat</button>
+          <button class="mood-btn" onclick="setPrincessMood('hungry')">🍦 Craving Sweets / Food</button>
+          <button class="mood-btn" onclick="setPrincessMood('sleepy')">😴 Cozy & Sleepy</button>
+        </div>
+
+        <div class="mood-response-box" id="moodResponse">
+          Tap any mood above to hear what Axat has to say to his Princess! 💖✨
+        </div>
+
+        <a id="moodWaLink" href="https://api.whatsapp.com/send?phone=919723690712&text=Axat!%20%F0%9F%A5%B0%20National%20Princess%20Day%20par%20aapki%20Princess%20Prinsi%20bhot%20happy%20hai!%20%F0%9F%91%91%E2%9C%A8%E2%9D%A4%EF%B8%8F" 
+           target="_blank" class="decree-claim-btn" style="max-width: 320px; margin: 0 auto; display: none;">
+          <span>💬</span> Send This Mood to Axat on WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FLOATING ROYAL WHATSAPP BUTTON (ALWAYS ACCESSIBLE) -->
+  <a href="https://api.whatsapp.com/send?phone=919723690712&text=Happy%20National%20Princess%20Day%20Axat!%20%F0%9F%91%91%F0%9F%A5%B0%20Aapki%20Princess%20Prinsi%20aapse%20bhot%20bhot%20zyada%20pyar%20karti%20hai!%20%F0%9F%92%96%F0%9F%8C%B9%E2%9C%A8" 
+     target="_blank" class="floating-royal-wa" title="Message Axat Directly">
+    <span>👑</span>
+    <span>Message Axat</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="royal-footer">
+    <p>Crafted with Infinite Adoration & Love by <span class="gold">Axat</span> for <span class="gold">Princess Prinsi</span> 💖</p>
+    <p>Celebrating National Princess Day 2026 • 7 Janmo Se Bhi Aage, Infinity Tak ♾️✨</p>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: THREE.JS 3D CROWN, AUDIO SYNTH, PARTICLES & LOGIC
+       ========================================================================== -->
+  <script>
+  /* ==========================================================================
+     1. THREE.JS 3D INTERACTIVE GOLDEN TIARA & GEMS
+     ========================================================================== */
+  let scene, camera, renderer, crownGroup, gemMesh, heartMesh;
+  let isDragging = false;
+  let previousMousePosition = { x: 0, y: 0 };
+  let autoRotate = true;
+
+  function initThree() {
+    const container = document.getElementById('crown3dWrapper');
+    const canvas = document.getElementById('threeCanvas');
+    if (!container || !canvas || typeof THREE === 'undefined') return;
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    // Scene
+    scene = new THREE.Scene();
+
+    // Camera
+    camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.set(0, 3, 11);
+    camera.lookAt(0, 0.5, 0);
+
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xfff0f5, 1.4);
+    scene.add(ambientLight);
+
+    const dirLight1 = new THREE.DirectionalLight(0xffd700, 2.2);
+    dirLight1.position.set(5, 10, 7);
+    scene.add(dirLight1);
+
+    const dirLight2 = new THREE.DirectionalLight(0xff69b4, 1.6);
+    dirLight2.position.set(-5, -5, -5);
+    scene.add(dirLight2);
+
+    const pointLight = new THREE.PointLight(0xffffff, 2.0, 30);
+    pointLight.position.set(0, 4, 4);
+    scene.add(pointLight);
+
+    // Build 3D Royal Crown
+    crownGroup = new THREE.Group();
+
+    // Materials
+    const goldMaterial = new THREE.MeshStandardMaterial({
+      color: 0xffd700,
+      metalness: 0.88,
+      roughness: 0.22,
+    });
+
+    const velvetMaterial = new THREE.MeshStandardMaterial({
+      color: 0x5a092b,
+      roughness: 0.9,
+      metalness: 0.1,
+    });
+
+    const rubyMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xff1493,
+      metalness: 0.1,
+      roughness: 0.1,
+      transmission: 0.6,
+      transparent: true,
+      opacity: 0.95,
+      reflectivity: 0.9
+    });
+
+    const diamondMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      metalness: 0.05,
+      roughness: 0.05,
+      transmission: 0.8,
+      transparent: true,
+      opacity: 0.95
+    });
+
+    // 1. Velvet Cushion inside Crown
+    const cushionGeo = new THREE.CylinderGeometry(2.3, 2.6, 1.1, 32);
+    const cushion = new THREE.Mesh(cushionGeo, velvetMaterial);
+    cushion.position.y = -0.3;
+    crownGroup.add(cushion);
+
+    // 2. Base Ring
+    const baseRingGeo = new THREE.TorusGeometry(2.5, 0.22, 16, 64);
+    const baseRing = new THREE.Mesh(baseRingGeo, goldMaterial);
+    baseRing.rotation.x = Math.PI / 2;
+    baseRing.position.y = -0.6;
+    crownGroup.add(baseRing);
+
+    // 3. Middle Ring
+    const midRingGeo = new THREE.TorusGeometry(2.65, 0.18, 16, 64);
+    const midRing = new THREE.Mesh(midRingGeo, goldMaterial);
+    midRing.rotation.x = Math.PI / 2;
+    midRing.position.y = 0.2;
+    crownGroup.add(midRing);
+
+    // 4. Pearls around the base band
+    const pearlCount = 20;
+    for (let i = 0; i < pearlCount; i++) {
+      const angle = (i / pearlCount) * Math.PI * 2;
+      const pearlGeo = new THREE.SphereGeometry(0.12, 12, 12);
+      const pearl = new THREE.Mesh(pearlGeo, diamondMaterial);
+      pearl.position.set(Math.cos(angle) * 2.55, -0.6, Math.sin(angle) * 2.55);
+      crownGroup.add(pearl);
+    }
+
+    // 5. Crown Peaks (5 majestic tiara peaks facing the viewer)
+    const peakConfigs = [
+      { angle: 0, height: 2.2, radius: 0.35, gemColor: 'ruby' },       // Center front
+      { angle: 0.55, height: 1.8, radius: 0.3, gemColor: 'diamond' },  // Front right
+      { angle: -0.55, height: 1.8, radius: 0.3, gemColor: 'diamond' }, // Front left
+      { angle: 1.15, height: 1.3, radius: 0.25, gemColor: 'ruby' },    // Side right
+      { angle: -1.15, height: 1.3, radius: 0.25, gemColor: 'ruby' },   // Side left
+      { angle: 1.8, height: 1.1, radius: 0.22, gemColor: 'diamond' },
+      { angle: -1.8, height: 1.1, radius: 0.22, gemColor: 'diamond' },
+      { angle: 2.5, height: 1.4, radius: 0.25, gemColor: 'ruby' },
+      { angle: -2.5, height: 1.4, radius: 0.25, gemColor: 'ruby' },
+      { angle: Math.PI, height: 1.7, radius: 0.28, gemColor: 'diamond' } // Back center
+    ];
+
+    peakConfigs.forEach(cfg => {
+      const coneGeo = new THREE.ConeGeometry(cfg.radius, cfg.height, 16);
+      const peak = new THREE.Mesh(coneGeo, goldMaterial);
+      const x = Math.cos(cfg.angle) * 2.6;
+      const z = Math.sin(cfg.angle) * 2.6;
+      peak.position.set(x, 0.2 + cfg.height / 2, z);
+      crownGroup.add(peak);
+
+      // Top Gem / Pearl on peak
+      const peakGemGeo = new THREE.OctahedronGeometry(0.22, 0);
+      const peakGemMat = cfg.gemColor === 'ruby' ? rubyMaterial : diamondMaterial;
+      const peakGem = new THREE.Mesh(peakGemGeo, peakGemMat);
+      peakGem.position.set(x, 0.2 + cfg.height + 0.15, z);
+      crownGroup.add(peakGem);
+    });
+
+    // 6. Magnificent Center Heart / Ruby Gemstone on Center Peak
+    const centerGemGeo = new THREE.OctahedronGeometry(0.55, 1);
+    gemMesh = new THREE.Mesh(centerGemGeo, rubyMaterial);
+    gemMesh.position.set(0, 0.3, 2.75);
+    crownGroup.add(gemMesh);
+
+    // 7. Golden Arches crossing over top with Center Finial Cross/Heart
+    const archCurve1 = new THREE.TorusGeometry(2.3, 0.12, 12, 32, Math.PI);
+    const arch1 = new THREE.Mesh(archCurve1, goldMaterial);
+    arch1.position.y = 0.2;
+    crownGroup.add(arch1);
+
+    const archCurve2 = new THREE.TorusGeometry(2.3, 0.12, 12, 32, Math.PI);
+    const arch2 = new THREE.Mesh(archCurve2, goldMaterial);
+    arch2.rotation.y = Math.PI / 2;
+    arch2.position.y = 0.2;
+    crownGroup.add(arch2);
+
+    // Floating Golden Heart at Crown Summit
+    const heartShape = new THREE.Shape();
+    heartShape.moveTo(0, 0.2);
+    heartShape.bezierCurveTo(0, 0.35, -0.25, 0.5, -0.4, 0.35);
+    heartShape.bezierCurveTo(-0.6, 0.15, -0.4, -0.2, 0, -0.45);
+    heartShape.bezierCurveTo(0.4, -0.2, 0.6, 0.15, 0.4, 0.35);
+    heartShape.bezierCurveTo(0.25, 0.5, 0, 0.35, 0, 0.2);
+
+    const extrudeSettings = { depth: 0.15, bevelEnabled: true, bevelSegments: 3, steps: 1, bevelSize: 0.05, bevelThickness: 0.05 };
+    const heartGeo = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+    heartMesh = new THREE.Mesh(heartGeo, goldMaterial);
+    heartMesh.scale.set(0.9, 0.9, 0.9);
+    heartMesh.position.set(0, 2.7, 0);
+    crownGroup.add(heartMesh);
+
+    // 8. 3D Floating Glitter Dust Particles around the crown
+    const glitterGeo = new THREE.BufferGeometry();
+    const glitterCount = 200;
+    const glitterPositions = new Float32Array(glitterCount * 3);
+    for (let i = 0; i < glitterCount * 3; i += 3) {
+      glitterPositions[i] = (Math.random() - 0.5) * 9;
+      glitterPositions[i + 1] = (Math.random() - 0.5) * 6 + 1;
+      glitterPositions[i + 2] = (Math.random() - 0.5) * 9;
+    }
+    glitterGeo.setAttribute('position', new THREE.BufferAttribute(glitterPositions, 3));
+    const glitterMat = new THREE.PointsMaterial({
+      color: 0xffd700,
+      size: 0.12,
+      transparent: true,
+      opacity: 0.8
+    });
+    const glitterPoints = new THREE.Points(glitterGeo, glitterMat);
+    scene.add(glitterPoints);
+
+    // Tilt crown slightly towards camera for optimal viewing angle
+    crownGroup.rotation.x = 0.25;
+    crownGroup.position.y = -0.5;
+    scene.add(crownGroup);
+
+    // Mouse & Touch Drag Controls
+    const onStart = (clientX, clientY) => {
+      isDragging = true;
+      autoRotate = false;
+      previousMousePosition = { x: clientX, y: clientY };
+    };
+
+    const onMove = (clientX, clientY) => {
+      if (!isDragging) return;
+      const deltaX = clientX - previousMousePosition.x;
+      const deltaY = clientY - previousMousePosition.y;
+
+      crownGroup.rotation.y += deltaX * 0.01;
+      crownGroup.rotation.x += deltaY * 0.006;
+      // Clamp vertical tilt
+      crownGroup.rotation.x = Math.max(-0.2, Math.min(0.6, crownGroup.rotation.x));
+
+      previousMousePosition = { x: clientX, y: clientY };
+    };
+
+    const onEnd = () => {
+      isDragging = false;
+      setTimeout(() => { autoRotate = true; }, 4000);
+    };
+
+    canvas.addEventListener('mousedown', (e) => onStart(e.clientX, e.clientY));
+    window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
+    window.addEventListener('mouseup', onEnd);
+
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) onStart(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1) onMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    window.addEventListener('touchend', onEnd);
+
+    // Window resize handler
+    window.addEventListener('resize', () => {
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+
+    // Animation Loop
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      if (autoRotate && crownGroup) {
+        crownGroup.rotation.y += 0.008;
+      }
+
+      // Gentle floating bobbing
+      crownGroup.position.y = -0.5 + Math.sin(elapsedTime * 1.5) * 0.15;
+
+      // Sparkling pulse on center ruby gem
+      if (gemMesh) {
+        const scale = 1 + Math.sin(elapsedTime * 3) * 0.08;
+        gemMesh.scale.set(scale, scale, scale);
+      }
+
+      // Orbit point light for sparkling reflections
+      pointLight.position.x = Math.sin(elapsedTime * 2) * 4;
+      pointLight.position.z = Math.cos(elapsedTime * 2) * 4;
+
+      // Slow glitter rotation
+      glitterPoints.rotation.y = elapsedTime * 0.05;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  // Fallback Canvas if Three.js CDN fails or WebGL is disabled
+  function initFallbackCrown() {
+    const canvas = document.getElementById('threeCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = canvas.parentElement.clientHeight;
+    let angle = 0;
+
+    function drawFallback() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(Math.sin(angle) * 0.1);
+      
+      // Draw glowing tiara
+      ctx.font = '90px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = '#ffd700';
+      ctx.shadowBlur = 30;
+      ctx.fillText('👑', 0, 0);
+      ctx.restore();
+
+      angle += 0.03;
+      requestAnimationFrame(drawFallback);
+    }
+    drawFallback();
+  }
+
+  /* ==========================================================================
+     2. BACKGROUND FALLING ROSE PETALS & SPARKLES CANVAS
+     ========================================================================== */
+  function initPetalCanvas() {
+    const canvas = document.getElementById('petalCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const count = 45;
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 12 + 8,
+        speedY: Math.random() * 1.2 + 0.6,
+        speedX: (Math.random() - 0.5) * 0.8,
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.04,
+        type: Math.random() > 0.4 ? 'petal' : 'heart',
+        opacity: Math.random() * 0.6 + 0.3
+      });
+    }
+
+    function renderPetals() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        p.rotation += p.rotSpeed;
+
+        if (p.y > height + 20) {
+          p.y = -20;
+          p.x = Math.random() * width;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.globalAlpha = p.opacity;
+
+        if (p.type === 'petal') {
+          ctx.fillStyle = '#ff4d8d';
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.font = `${p.size}px serif`;
+          ctx.textAlign = 'center';
+          ctx.fillText('✨', 0, 0);
+        }
+        ctx.restore();
+      });
+
+      requestAnimationFrame(renderPetals);
+    }
+    renderPetals();
+  }
+
+  /* ==========================================================================
+     3. WEB AUDIO API: ROYAL FAIRY-TALE MUSIC BOX WALTZ
+     ========================================================================== */
+  let audioCtx = null;
+  let isPlayingMusic = false;
+  let melodyTimer = null;
+
+  function initAudio() {
+    if (!audioCtx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  function playChimeNote(freq, startTime, duration = 0.8) {
+    if (!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, startTime);
+
+    gain.gain.setValueAtTime(0, startTime);
+    gain.gain.linearRampToValueAtTime(0.2, startTime + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(startTime);
+    osc.stop(startTime + duration);
+  }
+
+  function playRoyalFanfare() {
+    initAudio();
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime;
+    // Majestic trumpet chime fanfare (C - G - C - E - G - high C)
+    const notes = [
+      { f: 523.25, d: 0.2, t: 0.0 },  // C5
+      { f: 659.25, d: 0.2, t: 0.2 },  // E5
+      { f: 783.99, d: 0.25, t: 0.4 }, // G5
+      { f: 1046.50, d: 0.8, t: 0.65 } // C6
+    ];
+    notes.forEach(n => playChimeNote(n.f, now + n.t, n.d));
+  }
+
+  // Romantic Fairy-Tale Music Box Waltz (Once Upon a Dream style)
+  const waltzNotes = [
+    523.25, 587.33, 659.25, 783.99, 659.25, 587.33, 523.25, 440.00,
+    523.25, 659.25, 783.99, 880.00, 783.99, 659.25, 523.25
+  ];
+
+  function startRoyalWaltz() {
+    initAudio();
+    isPlayingMusic = true;
+    document.getElementById('royalMusicIcon').textContent = '🔊';
+    document.getElementById('royalMusicText').textContent = 'Playing 💖';
+
+    let noteIdx = 0;
+    melodyTimer = setInterval(() => {
+      if (!isPlayingMusic || !audioCtx) return;
+      const now = audioCtx.currentTime;
+      playChimeNote(waltzNotes[noteIdx], now, 0.9);
+      noteIdx = (noteIdx + 1) % waltzNotes.length;
+    }, 600);
+  }
+
+  function stopRoyalWaltz() {
+    isPlayingMusic = false;
+    clearInterval(melodyTimer);
+    document.getElementById('royalMusicIcon').textContent = '🎶';
+    document.getElementById('royalMusicText').textContent = 'Royal Waltz';
+  }
+
+  document.getElementById('royalMusicBtn').addEventListener('click', () => {
+    if (isPlayingMusic) {
+      stopRoyalWaltz();
+    } else {
+      startRoyalWaltz();
+    }
+  });
+
+  /* ==========================================================================
+     4. CORONATION CEREMONY MODAL & CONFETTI
+     ========================================================================== */
+  const coronateBtn = document.getElementById('coronateBtn');
+  const coronationModal = document.getElementById('coronationModal');
+  const closeCoronationModal = document.getElementById('closeCoronationModal');
+
+  coronateBtn.addEventListener('click', () => {
+    playRoyalFanfare();
+
+    // Trigger Canvas Confetti Explosion
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#ffd700', '#ff4081', '#ffffff', '#ff80ab', '#e91e63']
+      });
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          angle: 60,
+          spread: 60,
+          origin: { x: 0 },
+          colors: ['#ffd700', '#ff4081']
+        });
+        confetti({
+          particleCount: 100,
+          angle: 120,
+          spread: 60,
+          origin: { x: 1 },
+          colors: ['#ffd700', '#ff80ab']
+        });
+      }, 350);
+    }
+
+    // Three.js Crown Ascension Animation
+    if (crownGroup) {
+      crownGroup.position.y = 1.2;
+      setTimeout(() => {
+        crownGroup.position.y = -0.5;
+      }, 800);
+    }
+
+    setTimeout(() => {
+      coronationModal.classList.add('active');
+    }, 450);
+  });
+
+  closeCoronationModal.addEventListener('click', () => {
+    coronationModal.classList.remove('active');
+  });
+
+  coronationModal.addEventListener('click', (e) => {
+    if (e.target === coronationModal) {
+      coronationModal.classList.remove('active');
+    }
+  });
+
+  /* ==========================================================================
+     5. MAGIC MIRROR INTERACTION
+     ========================================================================== */
+  const mirrorGlass = document.getElementById('mirrorGlass');
+  const mirrorTriggerBtn = document.getElementById('mirrorTriggerBtn');
+  const mirrorReveal = document.getElementById('mirrorReveal');
+
+  function triggerMirror() {
+    initAudio();
+    playChimeNote(880, audioCtx ? audioCtx.currentTime : 0, 0.5);
+    mirrorGlass.style.transform = 'scale(1.15) rotate(5deg)';
+    setTimeout(() => {
+      mirrorGlass.style.transform = 'scale(1)';
+      mirrorReveal.classList.add('active');
+      mirrorTriggerBtn.style.display = 'none';
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 70,
+          spread: 70,
+          origin: { y: 0.7 },
+          colors: ['#ffd700', '#ff80ab']
+        });
+      }
+    }, 400);
+  }
+
+  mirrorGlass.addEventListener('click', triggerMirror);
+  mirrorTriggerBtn.addEventListener('click', triggerMirror);
+
+  /* ==========================================================================
+     6. ROYAL TREASURE CHESTS TOGGLE
+     ========================================================================== */
+  function toggleChest(element) {
+    initAudio();
+    playChimeNote(659.25, audioCtx ? audioCtx.currentTime : 0, 0.4);
+    element.classList.toggle('opened');
+    const status = element.querySelector('.chest-status');
+    if (element.classList.contains('opened')) {
+      status.textContent = 'Unlocked ✨';
+    } else {
+      status.textContent = 'Tap to Open';
+    }
+  }
+
+  /* ==========================================================================
+     7. PRINCESS MOOD COMPLIMENT GENERATOR
+     ========================================================================== */
+  const moodResponses = {
+    cute: {
+      text: "🌸 'MashaAllah! Meri Princess Prinsi toh waise hi 24 ghante duniya ki sabse pyari cutiepie lagti hain! Aapki ek smile par poora din roshan ho jata hai!' 🥰💖",
+      waText: "Axat!%20%F0%9F%8C%B8%20Aaj%20mai%20super%20cute%20feel%20kar%20rahi%20hoon!%20Aapki%20Princess%20Prinsi%20ka%20didar%20kar%20lo!%20%F0%9F%91%91%F0%9F%A5%B0"
+    },
+    pout: {
+      text: "😤 'Arre meri pyari Prinsuji ko kis baat par gussa aaya? Chalo abhi ke abhi 100 flying kisses aur ek tight jhappi accept kijiye, aur smile kijiye turant!' 💋🫂",
+      waText: "Axat!%20%F0%9F%98%A4%20Princess%20Prinsi%20thoda%20naraz%20hai%2C%20turant%20aake%20manao%20aur%20pyar%20karo!%20%F0%9F%92%96%F0%9F%A4%97"
+    },
+    miss: {
+      text: "🥺 'Axat toh har ek pal, har ek saans me sirf aur sirf apni wifiji ko miss karta hai! Dil toh bas aapke paas hi rehta hai hamesha!' ❤️♾️",
+      waText: "Axat%20ji%2C%20I%20miss%20youuu%20sooooo%20muchhhh!%20%F0%9F%A5%BA%E2%9D%A4%EF%B8%8F%20Jaldi%20se%20hug%20aur%20call%20karo!%20%F0%9F%91%91%F0%9F%92%8B"
+    },
+    hungry: {
+      text: "🍦 'Princess Prinsi ke shahi dastarkhwan par kya pesh kiya jaye? Ice cream, chocolates ya hot spicy momos? Chef Axat is ready on call!' 🍫🍕",
+      waText: "Chef%20Axat!%20%F0%9F%8D%A6%F0%9F%8D%AB%20Princess%20Prinsi%20ko%20yummy%20food%20chahiye%2C%20jaldi%20order%20ready%20karo!%20%F0%9F%98%8B%F0%9F%A5%B0"
+    },
+    sleepy: {
+      text: "😴 'Sweet dreams meri jaan! Sabse cozy rajai me so jao, matha choom ke Axat aapko shahi lori suna rahe hain... Good night my princess!' 🌙✨",
+      waText: "Axat%2C%20Princess%20Prinsi%20is%20sleepy!%20%F0%9F%98%B4%E2%9C%A8%20Pyara%20sa%20good%20night%20kiss%20aur%20hug%20bhejo!%20%F0%9F%92%8B%F0%9F%92%96"
+    }
+  };
+
+  function setPrincessMood(moodKey) {
+    initAudio();
+    playChimeNote(783.99, audioCtx ? audioCtx.currentTime : 0, 0.4);
+
+    document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    const response = moodResponses[moodKey];
+    const box = document.getElementById('moodResponse');
+    const waLink = document.getElementById('moodWaLink');
+
+    box.style.opacity = 0;
+    setTimeout(() => {
+      box.innerHTML = response.text;
+      box.style.opacity = 1;
+      box.style.transition = 'opacity 0.4s ease';
+
+      waLink.href = `https://api.whatsapp.com/send?phone=919723690712&text=${response.waText}`;
+      waLink.style.display = 'flex';
+    }, 200);
+  }
+
+  // Auto-init on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    initPetalCanvas();
+    if (typeof THREE !== 'undefined') {
+      initThree();
+    } else {
+      initFallbackCrown();
+    }
+  });
+  </script>
+</body>
+</html>

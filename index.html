@@ -2121,6 +2121,69 @@ body {
   }
 }
 
+/* National Princess Day 3D Special Announcement Banner */
+.princess-day-announcement-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #2b0b42 0%, #4a154b 50%, #1d062e 100%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 14px 22px;
+  max-width: 650px;
+  margin: 0 auto 20px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35), 0 0 20px rgba(233, 30, 99, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: pulsePrincessCard 2.5s infinite ease-in-out;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.princess-day-announcement-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6), 0 0 30px rgba(233, 30, 99, 0.7);
+}
+
+@keyframes pulsePrincessCard {
+  0%, 100% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3), 0 0 15px rgba(233, 30, 99, 0.3); }
+  50% { box-shadow: 0 14px 38px rgba(255, 215, 0, 0.6), 0 0 28px rgba(233, 30, 99, 0.65); }
+}
+
+.p-banner-icon {
+  font-size: 2.2rem;
+  animation: crownPulse 2s infinite ease-in-out;
+}
+
+.p-banner-badge {
+  color: #ffd700;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.p-banner-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  font-family: var(--font-display);
+  margin: 2px 0;
+}
+
+.p-banner-sub {
+  color: #fce4ec;
+  font-size: 0.88rem;
+}
+
+.p-banner-arrow {
+  color: #ffd700;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-left: auto;
+}
+
 </style>
 </head>
 <body>
@@ -2172,6 +2235,10 @@ body {
       <span class="nav-icon">🎡</span>
       <span class="nav-label">Pamper Hub</span>
     </a>
+    <a href="/princess" class="nav-item" style="color: #ffd700;">
+      <span class="nav-icon">👑</span>
+      <span class="nav-label">Princess Day</span>
+    </a>
   </nav>
 
   <!-- Main Container -->
@@ -2187,6 +2254,17 @@ body {
         <span class="sticker s5">🍬</span>
         <span class="sticker s6">✨</span>
       </div>
+
+      <!-- NATIONAL PRINCESS DAY 3D SPECIAL BANNER -->
+      <a href="/princess" class="princess-day-announcement-card">
+        <div class="p-banner-icon">👑</div>
+        <div class="p-banner-content">
+          <div class="p-banner-badge">✨ 18 NOV SPECIAL • NATIONAL PRINCESS DAY ✨</div>
+          <div class="p-banner-title">Princess Prinsi's 3D Royal Palace Is Now Live! 👸🏰</div>
+          <div class="p-banner-sub">Tap here to enter the magical 3D Golden Tiara Coronation Arena &rarr;</div>
+        </div>
+        <div class="p-banner-arrow">✨&gt;</div>
+      </a>
 
       <div class="badge-pill pulse-glow">
         <span class="badge-heart">💖</span>

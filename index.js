@@ -11,6 +11,13 @@ try {
   pamperHtml = indexHtml;
 }
 
+let princessHtml = indexHtml;
+try {
+  princessHtml = fs.readFileSync(path.join(__dirname, 'princess.html'));
+} catch (e) {
+  princessHtml = indexHtml;
+}
+
 function handler(req, res) {
   const url = (req.url || '/').split('?')[0].toLowerCase();
 
@@ -18,7 +25,9 @@ function handler(req, res) {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=3600');
 
-  if (url.includes('pamper')) {
+  if (url.includes('princess')) {
+    res.end(princessHtml);
+  } else if (url.includes('pamper')) {
     res.end(pamperHtml);
   } else {
     res.end(indexHtml);
